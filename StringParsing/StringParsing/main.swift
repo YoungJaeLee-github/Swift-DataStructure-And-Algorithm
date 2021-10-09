@@ -52,8 +52,6 @@ if (count == 1) {
 }
 
 //MARK: - output
-
-//print("[", terminator: "")
 var check: Array<Bool> = Array(repeating: false, count: 110)
 var temp: String = ""
 for i in 0..<marked.count {
