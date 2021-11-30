@@ -16,10 +16,10 @@ struct PriorityQueue {
         var idx: Int = data.count - 1
         
         while idx > 0 {
-            if self.data[idx] < self.data[idx / 2] {
+            if self.data[idx] < self.data[idx >> 1] {
                 let temp: Int = self.data[idx]
-                self.data[idx] = self.data[idx / 2]
-                self.data[idx / 2] = temp
+                self.data[idx] = self.data[idx >> 1]
+                self.data[idx >> 1] = temp
                 
                 idx >>= 1
             } else {
@@ -36,12 +36,12 @@ struct PriorityQueue {
         
         while true {
             var childIdx: Int = 0
-            if self.data.count <= idx * 2 {
+            if self.data.count <= idx << 1 {
                 break
-            } else if (0 <= idx * 2 && idx * 2 <= self.data.count) && self.data.count <= idx * 2 + 1 {
-                childIdx = idx * 2
+            } else if (0 <= idx << 1 && idx << 1 <= self.data.count) && self.data.count <= idx << 1 + 1 {
+                childIdx = idx << 1
             } else {
-                childIdx = self.data[idx * 2] < self.data[idx * 2 + 1] ? idx * 2 : idx * 2 + 1
+                childIdx = self.data[idx << 1] < self.data[idx << 1 + 1] ? idx << 1 : idx << 1 + 1
             }
             
             if self.data[idx] > self.data[childIdx] {
