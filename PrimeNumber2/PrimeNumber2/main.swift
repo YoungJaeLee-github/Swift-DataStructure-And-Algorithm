@@ -9,23 +9,14 @@
 import Foundation
 
 //MARK: - Functions
-func isPrime(_ number: Int) -> Bool {
-    if number == 1 {
-        return false
-    } else if number == 2 {
-        return true
-    } else {
-        var flag: Bool = true
-        var i: Int = 2
-        while i * i <= number {
-            if number % i == 0 {
-                flag = false
-                break
+func getPrimeNumbers(_ m: Int, _ candidates: inout Array<Int>) -> Void {
+    for i in 2...m {
+        for j in stride(from: i * 2, through: m, by: i) {
+            if candidates[j] == 0 {
+                continue
             }
-            i += 1
+            candidates[j] = 0
         }
-        
-        return flag
     }
 }
 
@@ -35,12 +26,18 @@ func solution() -> Void {
     let n: Int = input.map { Int($0) }[0] ?? 0
     let m: Int = input.map { Int($0) }[1] ?? 0
     var answer: String = ""
+    var candidates: Array<Int> = Array(repeating: 0, count: m + 10)
+    
+    for i in 2...m {
+        candidates[i] = i
+    }
     
     //MARK: - process
+    getPrimeNumbers(m, &candidates)
     for i in n..<m {
-        answer += isPrime(i) ? "\(i) " : ""
+        answer += candidates[i] != 0 ? "\(candidates[i]) " : ""
     }
-    answer += isPrime(m) ? "\(m)" : ""
+    answer += candidates[m] != 0 ? "\(candidates[m])" : ""
     
     //MARK: - output
     print(answer)

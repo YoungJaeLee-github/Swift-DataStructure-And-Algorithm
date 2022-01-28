@@ -5,7 +5,6 @@
 //  Created by 이영재 on 2022/01/28.
 //MARK: - 숫자 피라미드
 
-
 //MARK: - Frameworks
 import Foundation
 
