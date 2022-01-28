@@ -23,6 +23,5 @@ func solution() -> Void {
         print("NO")
     }
 }
-
 solution()
 

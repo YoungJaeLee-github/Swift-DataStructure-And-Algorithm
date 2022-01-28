@@ -19,7 +19,7 @@ func solution() -> Void {
     var day: Int = 0
     
     //MARK: - process
-    while (saveMoney < M) {
+    while saveMoney < M {
         saveMoney += money
         money += 1
         day += 1

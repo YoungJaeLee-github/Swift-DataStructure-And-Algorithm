@@ -24,5 +24,4 @@ func solution() -> Void {
     //MARK: - output
     print(A, B, separator: " ")
 }
-
 solution()

@@ -19,6 +19,5 @@ func solution() -> Void {
     //MARK: - output
     print(N % 2 == 0 ? "even" : "not even")
 }
-
 solution()
 
