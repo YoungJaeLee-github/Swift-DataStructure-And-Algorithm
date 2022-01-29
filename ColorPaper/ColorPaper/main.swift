@@ -10,11 +10,13 @@ import Foundation
 
 //MARK: - Types
 struct ColorPaperInfo {
+    //MARK: - Properties
     var row: Int
     var column: Int
     var width: Int
     var height: Int
     
+    //MARK: - Initializer
     init(_ row: Int, _ column: Int, _ width: Int, _ height: Int) {
         self.row = row
         self.column = column
