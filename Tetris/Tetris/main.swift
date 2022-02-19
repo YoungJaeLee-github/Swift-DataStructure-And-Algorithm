@@ -74,7 +74,7 @@ func solution() -> Void {
             zeroCount += 1
         }
         if zeroCount >= 4 {
-            candidateX.append(i + 1)
+            candidateX.append(i)
         }
     }
     
@@ -86,14 +86,14 @@ func solution() -> Void {
             var bottom: Int = 3
             
             for i in bottom..<R {
-                if tetris.data[i][x - 1] == 0 {
+                if tetris.data[i][x] == 0 {
                     bottom = i
                 } else {
                     break
                 }
             }
             
-            candidateY[x - 1] = getCompleteCount(tetris.data, bottom, tetris.R, tetris.C, x - 1)
+            candidateY[x] = getCompleteCount(tetris.data, bottom, tetris.R, tetris.C, x)
         }
         
         for i in 0..<C {
@@ -112,4 +112,3 @@ func solution() -> Void {
     print("\(tetris.X + 1) \(tetris.Y)")
 }
 solution()
-
