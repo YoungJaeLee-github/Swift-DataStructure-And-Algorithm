@@ -61,3 +61,75 @@
     4. 완전 탐색을 수행하기 위해서는 모든 경우가 무엇인지 파악하는 것이 중요함
     5. 문제를 접했을 때 가장 먼저 접근해봐야 하는 알고리즘 
 </pre>
+
+## 정렬(Sort)
+<pre>
+    1. 특정 기준을 적용하여 데이터를 나열하는 알고리즘
+    2. 오름차순 정렬(갈수록 커지는 것)
+    3. 내림차순 정렬(갈수록 작아지는 것)
+</pre>
+
+## 기본적인 정렬 알고리즘의 종류
+### 선택정렬(Selection Sort)
+<pre>
+    1. 최솟값을 맨 앞으로 이동시킴(오름차순)
+    2. 왼쪽은 정렬이 모두 되었다는 의미
+    3. O(N^2)의 시간복잡도를 가짐
+    
+    for i in 0..<(N - 1) {
+        var index: Int = i
+        for j in (i + 1)..<N {
+            if data[index] > data[j] {
+                index = j
+            }
+        }
+        
+        let temp: Int = data[index]
+        data[index] = data[i]
+        data[i] = temp
+    }
+}
+</pre>
+
+### 삽입정렬(Insertion Sort)
+<pre>
+    1. 원소를 차례대로 정렬된 배열에 삽입시킴
+    2. 왼쪽은 정렬이 모두 되었다는 의미
+    3. O(N^2)의 시간복잡도를 가짐
+    
+    for i in 1..<N {
+        for j in stride(from: i, to: 0, by: -1) {
+            if data[j] < data[j - 1] {
+                let temp: Int = data[j]
+                data[j] = data[j - 1]
+                data[j - 1] = temp
+            }
+        }
+    }
+</pre>
+
+### 버블정렬(Bubble Sort)
+<pre>
+    1. 인접한 원소를 비교하여 큰 수를 뒤로 보냄
+    2. 오른쪽은 정렬이 모두 되었다는 의미
+    3. O(N^2)의 시간복잡도를 가짐
+    
+    for i in stride(from: N - 1, to: 0, by: - 1) {
+        for j in 0..<i {
+            if data[j] > data[j + 1] {
+                let temp: Int = data[j]
+                data[j] = data[j + 1]
+                data[j + 1] = temp
+            }
+        }
+    }
+</pre>
+
+## 시간 복잡도(Time Complexity)
+<pre>
+    1. 문제를 효율적으로 해결
+    2. 똑같은 문제를 해결 하더라도 빠르게 해결하는 것이 중요
+    3. 시간 복잡도를 계산 함으로써 프로그램을 직접 실행해보지 않더라도 얼마나 빠른지 대략적으로 알 수 있음
+    4. O(1), O(N), O(N^2) ... 중 가장 영향력 있는 시간복잡도가 최악의 경우 시간 복잡도를 결정함(최고차항)
+    5. 컴퓨터 사양마다 명령을 수행하는데 걸리는 시간은 다 다르지만 비슷하다고 가정 했을 때, 대략 1억번 연산을 수행하는데 1초가 걸림
+</pre>
