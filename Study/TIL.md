@@ -96,7 +96,7 @@
     2. 왼쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
     
-    for i in 1 ... (N - 1) {
+    for i in 1...(N - 1) {
         for j in stride(from: i, to: 0, by: -1) {
             if data[j] < data[j - 1] {
                 let temp: Int = data[j]
@@ -108,14 +108,13 @@
 </pre>
 
 ### 버블정렬(Bubble Sort)
-
 <pre>
     1. 인접한 원소를 비교하여 큰 수를 뒤로 보냄
     2. 오른쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
     
     for i in stride(from: N - 1, to: 0, by: - 1) {
-        for j in 0... (i - 1) {
+        for j in 0...(i - 1) {
             if data[j] > data[j + 1] {
                 let temp: Int = data[j]
                 data[j] = data[j + 1]
@@ -126,7 +125,6 @@
 </pre>
 
 ## 시간 복잡도(Time Complexity)
-
 <pre>
     1. 문제를 효율적으로 해결
     2. 똑같은 문제를 해결 하더라도 빠르게 해결하는 것이 중요
