@@ -76,7 +76,6 @@
     2. 왼쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
     
-    ```
     for i in 0..<(N - 1) {
         var index: Int = i
         for j in (i + 1)..<N {
@@ -89,8 +88,6 @@
         data[index] = data[i]
         data[i] = temp
     }
-    ```
-}
 </pre>
 
 ### 삽입정렬(Insertion Sort)
@@ -99,7 +96,6 @@
     2. 왼쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
     
-    ```
     for i in 1..<N {
         for j in stride(from: i, to: 0, by: -1) {
             if data[j] < data[j - 1] {
@@ -109,7 +105,6 @@
             }
         }
     }
-    ```
 </pre>
 
 ### 버블정렬(Bubble Sort)
@@ -119,7 +114,6 @@
     2. 오른쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
     
-    ```
     for i in stride(from: N - 1, to: 0, by: - 1) {
         for j in 0..<i {
             if data[j] > data[j + 1] {
@@ -129,7 +123,6 @@
             }
         }
     }
-    ```
 </pre>
 
 ## 시간 복잡도(Time Complexity)
