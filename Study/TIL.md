@@ -96,7 +96,7 @@
     2. 왼쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
     
-    for i in 1..<N {
+    for i in 1 ... (N - 1) {
         for j in stride(from: i, to: 0, by: -1) {
             if data[j] < data[j - 1] {
                 let temp: Int = data[j]
@@ -115,7 +115,7 @@
     3. O(N^2)의 시간복잡도를 가짐
     
     for i in stride(from: N - 1, to: 0, by: - 1) {
-        for j in 0..<i {
+        for j in 0... (i - 1) {
             if data[j] > data[j + 1] {
                 let temp: Int = data[j]
                 data[j] = data[j + 1]
