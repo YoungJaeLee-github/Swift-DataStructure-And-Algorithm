@@ -188,11 +188,11 @@
         var pascal: [[Int]] = [N + 10][N + 10]
         pascal[0][0] = 1
         
-        for i in 1...N {
+        for i in 1 ~ N {
             pascal[i][0] = 1
             pascal[i][i] = 1
             
-            for j in 1..<i {
+            for j in 1 ~ (i - 1) {
                 pascal[i][j] = pascal[i - 1][j - 1] + pascal[i - 1][j]
             }
         }
