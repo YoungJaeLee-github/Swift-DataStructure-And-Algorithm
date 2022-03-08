@@ -41,4 +41,3 @@ func solution() -> Void {
     print(answer)
 }
 solution()
-
