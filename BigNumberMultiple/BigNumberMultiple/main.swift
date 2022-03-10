@@ -1,6 +1,6 @@
 //
 //  main.swift
-//  BigNubmerMultiple
+//  BigNumberMultiple
 //
 //  Created by 이영재 on 2022/03/10.
 //MARK: - 큰 자릿수 곱셈

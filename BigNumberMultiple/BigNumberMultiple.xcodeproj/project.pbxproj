@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		86D7443427D9EE0B003CE7AF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7443327D9EE0B003CE7AF /* main.swift */; };
+		86D7446D27D9FE60003CE7AF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7446C27D9FE60003CE7AF /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		86D7442E27D9EE0B003CE7AF /* CopyFiles */ = {
+		86D7446727D9FE60003CE7AF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		86D7443027D9EE0B003CE7AF /* BigNubmerMultiple */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BigNubmerMultiple; sourceTree = BUILT_PRODUCTS_DIR; };
-		86D7443327D9EE0B003CE7AF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		86D7446927D9FE60003CE7AF /* BigNumberMultiple */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BigNumberMultiple; sourceTree = BUILT_PRODUCTS_DIR; };
+		86D7446C27D9FE60003CE7AF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		86D7442D27D9EE0B003CE7AF /* Frameworks */ = {
+		86D7446627D9FE60003CE7AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,66 +38,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		86D7442727D9EE0B003CE7AF = {
+		86D7446027D9FE60003CE7AF = {
 			isa = PBXGroup;
 			children = (
-				86D7443227D9EE0B003CE7AF /* BigNubmerMultiple */,
-				86D7443127D9EE0B003CE7AF /* Products */,
+				86D7446B27D9FE60003CE7AF /* BigNumberMultiple */,
+				86D7446A27D9FE60003CE7AF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		86D7443127D9EE0B003CE7AF /* Products */ = {
+		86D7446A27D9FE60003CE7AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				86D7443027D9EE0B003CE7AF /* BigNubmerMultiple */,
+				86D7446927D9FE60003CE7AF /* BigNumberMultiple */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		86D7443227D9EE0B003CE7AF /* BigNubmerMultiple */ = {
+		86D7446B27D9FE60003CE7AF /* BigNumberMultiple */ = {
 			isa = PBXGroup;
 			children = (
-				86D7443327D9EE0B003CE7AF /* main.swift */,
+				86D7446C27D9FE60003CE7AF /* main.swift */,
 			);
-			path = BigNubmerMultiple;
+			path = BigNumberMultiple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		86D7442F27D9EE0B003CE7AF /* BigNubmerMultiple */ = {
+		86D7446827D9FE60003CE7AF /* BigNumberMultiple */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 86D7443727D9EE0B003CE7AF /* Build configuration list for PBXNativeTarget "BigNubmerMultiple" */;
+			buildConfigurationList = 86D7447027D9FE60003CE7AF /* Build configuration list for PBXNativeTarget "BigNumberMultiple" */;
 			buildPhases = (
-				86D7442C27D9EE0B003CE7AF /* Sources */,
-				86D7442D27D9EE0B003CE7AF /* Frameworks */,
-				86D7442E27D9EE0B003CE7AF /* CopyFiles */,
+				86D7446527D9FE60003CE7AF /* Sources */,
+				86D7446627D9FE60003CE7AF /* Frameworks */,
+				86D7446727D9FE60003CE7AF /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BigNubmerMultiple;
-			productName = BigNubmerMultiple;
-			productReference = 86D7443027D9EE0B003CE7AF /* BigNubmerMultiple */;
+			name = BigNumberMultiple;
+			productName = BigNumberMultiple;
+			productReference = 86D7446927D9FE60003CE7AF /* BigNumberMultiple */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		86D7442827D9EE0B003CE7AF /* Project object */ = {
+		86D7446127D9FE60003CE7AF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					86D7442F27D9EE0B003CE7AF = {
+					86D7446827D9FE60003CE7AF = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
-			buildConfigurationList = 86D7442B27D9EE0B003CE7AF /* Build configuration list for PBXProject "BigNubmerMultiple" */;
+			buildConfigurationList = 86D7446427D9FE60003CE7AF /* Build configuration list for PBXProject "BigNumberMultiple" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -105,29 +105,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 86D7442727D9EE0B003CE7AF;
-			productRefGroup = 86D7443127D9EE0B003CE7AF /* Products */;
+			mainGroup = 86D7446027D9FE60003CE7AF;
+			productRefGroup = 86D7446A27D9FE60003CE7AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				86D7442F27D9EE0B003CE7AF /* BigNubmerMultiple */,
+				86D7446827D9FE60003CE7AF /* BigNumberMultiple */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		86D7442C27D9EE0B003CE7AF /* Sources */ = {
+		86D7446527D9FE60003CE7AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86D7443427D9EE0B003CE7AF /* main.swift in Sources */,
+				86D7446D27D9FE60003CE7AF /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		86D7443527D9EE0B003CE7AF /* Debug */ = {
+		86D7446E27D9FE60003CE7AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		86D7443627D9EE0B003CE7AF /* Release */ = {
+		86D7446F27D9FE60003CE7AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -242,7 +242,7 @@
 			};
 			name = Release;
 		};
-		86D7443827D9EE0B003CE7AF /* Debug */ = {
+		86D7447127D9FE60003CE7AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -253,7 +253,7 @@
 			};
 			name = Debug;
 		};
-		86D7443927D9EE0B003CE7AF /* Release */ = {
+		86D7447227D9FE60003CE7AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -267,25 +267,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		86D7442B27D9EE0B003CE7AF /* Build configuration list for PBXProject "BigNubmerMultiple" */ = {
+		86D7446427D9FE60003CE7AF /* Build configuration list for PBXProject "BigNumberMultiple" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				86D7443527D9EE0B003CE7AF /* Debug */,
-				86D7443627D9EE0B003CE7AF /* Release */,
+				86D7446E27D9FE60003CE7AF /* Debug */,
+				86D7446F27D9FE60003CE7AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		86D7443727D9EE0B003CE7AF /* Build configuration list for PBXNativeTarget "BigNubmerMultiple" */ = {
+		86D7447027D9FE60003CE7AF /* Build configuration list for PBXNativeTarget "BigNumberMultiple" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				86D7443827D9EE0B003CE7AF /* Debug */,
-				86D7443927D9EE0B003CE7AF /* Release */,
+				86D7447127D9FE60003CE7AF /* Debug */,
+				86D7447227D9FE60003CE7AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 86D7442827D9EE0B003CE7AF /* Project object */;
+	rootObject = 86D7446127D9FE60003CE7AF /* Project object */;
 }
