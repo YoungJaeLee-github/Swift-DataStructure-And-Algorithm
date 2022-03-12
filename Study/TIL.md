@@ -216,3 +216,79 @@
     1. 문자만으로 이루어진 배열
     2. 여러 개의 문자를 저장할 수 있음
 </pre>
+
+## 함수(Function)
+<pre>
+    1. 수학에서 어떤 숫자가 들어왔을 때 처리를 해서 출력하는 것
+    2. 값을 입력받아 특정 연산을 수행하여 결과를 반환하는 것
+    3. Swift 기준 함수 문법
+    func 함수이름 -> 반환타입 {
+        구현체
+        반환값
+    }
+    
+    4. Java 기준 함수(메소드) 문법
+    public (static) 반환타입 함수이름 {
+        구현체
+        반환값
+    }
+</pre>
+
+### 스코프(Scope)
+<pre>
+    1. 변수는 선언된 블록 내에서만 접근할 수 있음
+    2. 함수간 작업의 완벽한 분담을 위해 스코프가 존재함
+</pre>
+
+## 포인터(Pointer)
+<pre>
+    1. 값을 저장하는 것이 아닌, 값의 위치(메모리 주소)를 저장하는 변수
+    2. 해당 주소가 가리키는 곳으로 접근하면 실제 저장되어 있는 값을 알 수 있음
+    3. 작성한 코드가 컴퓨터 내부적으로 어떻게 동작하는지에 대한 원리는 반드시 파악하고 있어야 하기 때문에 포인터의 개념이 중요함
+</pre>
+
+### 메모리(Memory)
+<pre>
+    1. 자료의 저장단위 : 비트(Bit), 바이트(Byte), 킬로바이트(KB), 메가바이트(MB), 기가바이트(GB)...
+    2. RAM(Random Access Memory) : 자료를 저장하기 위한 장치, 위치마다 접근하는데 걸리는 시간이 비슷하기 때문에 Random이라고 함
+    3. PC의 운영체제가 우리가 흔히 알고 있는 64bit 운영체제, 32bit 운영체제라는 것은 메모리 하나의 주소의 크기가 64bit, 32bit라는 것
+    4. 즉, 메모리의 주소 하나가 최대로 담을 수 있는 용량이 8Byte(64bit), 4Byte(32bit)라는 말과 동일함
+    5. Big Endian, Little Endian : 컴퓨터가 값을 저장하는 순서, 높은 숫자 부터 저장하는 것이 Big Endian, 낮은 숫자부터 저장하는 것이 Little Endian
+</pre>
+
+### 운영체제(Operating System)
+<pre>
+    1. 정의 : 하드웨어를 제어하기 위한 소프트웨어(ex) Linux, MacOS, Windows, iOS, Android...)
+</pre>
+
+## Call By Value vs Call By Reference
+<pre>
+    1. call by value : 값에 의한 호출, 변수의 값을 복사해서 인자로 넘겨줌. 따라서 원본의 값이 변경되지 않음
+    2. call by reference: 참조에 의한 호출, 변수의 주소를 인자로 넘겨줌. 따라서 원본의 값이 변경됨
+</pre>
+
+### Swift에서의 Array
+
+<img width="490" alt="스크린샷 2022-03-12 16 16 04" src="https://user-images.githubusercontent.com/77099686/158008204-caa533b8-d10c-4e71-a0f3-dd3ca6fe67fb.png">
+    
+<pre>
+    1. Swift에서 Array는 struct 즉, 값 타입이기 때문에 전달인자로 전달될 때 값이 복사돼서 넘어감
+    2. Call By Value를 Call By Reference 처럼 사용할 수 있는 방법이 있지만, 권장하지 않음
+    3. 단, 아래와 같이 정확한 목적이 있는 경우에는 사용할 수도 있음
+    
+    func swap(_ a: inout Int, _ b: inout Int) -> Void {
+        let temp: Int = a
+        a = b
+        b = a
+    }
+    
+    func solution() -> Void {
+        var a: Int = 5
+        var b: Int = 10
+        
+        swap(&a, &b)
+        
+        print(a, b) // 10, 5
+    }
+    solution()
+</pre>
