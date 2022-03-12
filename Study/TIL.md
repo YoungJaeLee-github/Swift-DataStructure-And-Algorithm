@@ -274,7 +274,7 @@
 <pre>
     1. Swift에서 Array는 struct 즉, 값 타입이기 때문에 전달인자로 전달될 때 값이 복사돼서 넘어감
     2. Call By Value를 Call By Reference 처럼 사용할 수 있는 방법이 있지만, 권장하지 않음
-    3. 단, 아래와 같이 정확한 목적이 있는 경우에는 사용할 수도 있음
+    3. 단, 아래와 같이 정확한 목적이 있는 경우에는 inout 키워드와 &(주소)값을 넘김으로써 사용할 수도 있음
     
     func swap(_ a: inout Int, _ b: inout Int) -> Void {
         let temp: Int = a
