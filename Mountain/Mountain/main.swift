@@ -5,15 +5,25 @@
 //  Created by 이영재 on 2021/09/25.
 //MARK: - Mountaion(Recursive Function)
 
+//MARK: - Function
 func getMountain(_ number: Int) -> String {
-    let current: Int = number
-    if current == 1 {
+    if number == 1 {
         return "1"
     } else {
-        return getMountain(current - 1) + "\(current)" + getMountain(current - 1)
+        let temp: String = getMountain(number - 1)
+        return temp + "\(number)" + temp
     }
 }
 
-let number: Int = Int(readLine()!)!
-
-print(getMountain(number))
+func solution() -> Void {
+    //MARK: - Input
+    guard let number: Int = Int(readLine() ?? "0") else { return }
+    var moutain: String = ""
+    
+    //MARK: - Process
+    moutain = getMountain(number)
+    
+    //MARK: - Output
+    print(moutain)
+}
+solution()
