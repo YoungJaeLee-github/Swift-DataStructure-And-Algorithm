@@ -2,121 +2,50 @@
 //  main.swift
 //  Inequal
 //
-//  Created by 이영재 on 2021/09/27.
-//MARK: - inequal - Advanced Brute-Force Algorithm(Recursion)
+//  Created by 이영재 on 2022/03/30.
+//MARK: - inequal
 
+//MARK: - Framework
 import Foundation
-var printFlag: Bool = false //한 번만 출력해주기 위한 변수
-let k: Int = Int(readLine()!)!  //부등호 개수 입력
-let inequals = readLine()!.components(separatedBy: " ") //부등호 입력
-var result: Array<Int> = Array(repeating: 0, count: k + 1)  //중복을 허용하지 않고, 부등호 조건에 맞는 숫자 구성을 담을 배열
-var check: Array<Bool> = Array(repeating: false, count: 10) //중복 검사를 위한 배열
 
-//중복을 허용하지 않으면서 제시된 부등호 관계를 만족하는 수 중
-//가장 큰 수를 구하는 함수
-func getMaxInequal(_ current: Int) -> Void {
-    //최초로 완성된 수가 있으면 함수를 종료
-    if printFlag {
+//MARK: - Variable
+var flag: Bool = false
+
+//MARK: - Function
+func getMaxInequal(_ A: [String], _ current: Int, _ k: Int, _ lowerBound: Int, _ upperBound: Int, _ result: inout [Int], _ check: inout [Bool]) -> Void {
+    if flag {
         return
     }
-    //기저조건(Base Condition)
-    if current == k + 1 {
-        //모든 재귀호출을 끝마친 후, 완성된 수를 출력 후
-        for i in result {
-            print(i, terminator:"")
+    
+    if current >= k + 1 {
+        var answer: String = ""
+        for number in result {
+            answer += "\(number)"
         }
-        //해당 수가 최대값이므로 최초로 완성됐다는 표시를 함
-        printFlag = true;
+        print(answer)
+        flag = true
     } else {
-        //각 자리수는 0~9 정수 이므로, 9부터 시작하여 처음으로 완성된 수가 조건에 맞는 최대값
-        for i in stride(from: 9, through: 0, by: -1) {
-            //이미 존재하는 수일 경우 다음 수로 넘어감
+        for i in stride(from: upperBound, through: lowerBound, by: -1) {
             if !check[i] {
-                //처음 값을 처리해주기 위한 변수
-                var flag: Bool = false
-                //첫 번째 위치에는 어떤 수가 와도 상관 없으므로 true 표시를 해줌
+                var isPossible: Bool = true
+                
                 if current == 0 {
-                    flag = true
+                    isPossible = true
                 } else {
-                    // 그 다음 위치 부터는 부등호 조건에 맞는 수를 판별
-                    switch inequals[current - 1] {
-                        case "<":
-                            if result[current - 1] < i {
-                                flag = true
-                            }
-                        case ">":
-                            if result[current - 1] > i {
-                                flag = true
-                            }
-                        default:
-                            break
-                    }
-                }
-                //중복을 허용하지 않으면서 부등호 조건에 맞는 수로 판별이 된 경우
-                if flag {
-                    //현재 위치에 해당 수를 저장하고,
-                    result[current] = i
-                    //사용했다는 표시를 한 후,
-                    check[i] = true
-                    //다음 위치로 재귀호출
-                    getMaxInequal(current + 1)
-                    //각 자리수 별로 재귀호출을 끝마친 후 다음 경우의 수를 위해 초기화
-                    check[i] = false
-                }
-            }
-        }
-    }
-}
-
-//중복을 허용하지 않으면서 제시된 부등호 관계를 만족하는 수 중
-//가장 작은 수를 구하는 함수
-func getMinInequal(_ current: Int) -> Void {
-    //최초로 완성된 수가 있으면 함수를 종료
-    if printFlag {
-        return
-    }
-    //기저조건(Base Condition)
-    if current == k + 1 {
-        //모든 재귀호출을 끝마친 후, 완성된 수를 출력 후
-        for i in result {
-            print(i, terminator: "")
-        }
-        //해당 수가 최소값이므로 최초로 완성됐다는 표시를 함
-        printFlag = true
-    } else {
-        //각 자리수는 0~9 정수 이므로, 0부터 시작하여 처음으로 완성된 수가 조건에 맞는 최소값
-        for i in 0...9 {
-            //이미 존재하는 수일 경우 다음 수로 넘어감
-            if !check[i] {
-                //처음 값을 처리해주기 위한 변수
-                var flag: Bool = false
-                //첫 번째 위치에는 어떤 수가 와도 상관 없으므로 true 표시를 해줌
-                if current == 0 {
-                    flag = true
-                } else {
-                    // 그 다음 위치 부터는 부등호 조건에 맞는 수를 판별
-                    switch inequals[current - 1] {
+                    switch A[current - 1] {
                     case "<":
-                        if result[current - 1] < i {
-                            flag = true
-                        }
+                        isPossible = result[current - 1] > i ? false : true
                     case ">":
-                        if result[current - 1] > i {
-                            flag = true
-                        }
+                        isPossible = result[current - 1] < i ? false : true
                     default:
                         break
                     }
                 }
-                //중복을 허용하지 않으면서 부등호 조건에 맞는 수로 판별이 된 경우
-                if flag {
-                    //현재 위치에 해당 수를 저장하고,
+                
+                if isPossible {
                     result[current] = i
-                    //사용했다는 표시를 한 후,
                     check[i] = true
-                    //다음 위치로 재귀호출
-                    getMinInequal(current + 1)
-                    //각 자리수 별로 재귀호출을 끝마친 후 다음 경우의 수를 위해 초기화
+                    getMaxInequal(A, current + 1, k, lowerBound, upperBound, &result, &check)
                     check[i] = false
                 }
             }
@@ -124,8 +53,63 @@ func getMinInequal(_ current: Int) -> Void {
     }
 }
 
-getMaxInequal(0)
-print()
-//전역 변수이므로 초기화
-printFlag = false
-getMinInequal(0)
+func getMinInequal(_ A: [String], _ current: Int, _ k: Int, _ lowerBound: Int, _ upperBound: Int, _ result: inout [Int], _ check: inout [Bool]) -> Void {
+    if flag {
+        return
+    }
+    
+    if current >= k + 1 {
+        var answer: String = ""
+        for number in result {
+            answer += "\(number)"
+        }
+        print(answer)
+        flag = true
+    } else {
+        for i in lowerBound...upperBound {
+            if !check[i] {
+                var isPossible: Bool = true
+                
+                if current == 0 {
+                    isPossible = true
+                } else {
+                    switch A[current - 1] {
+                    case "<":
+                        isPossible = result[current - 1] > i ? false : true
+                    case ">":
+                        isPossible = result[current - 1] < i ? false : true
+                    default:
+                        break
+                    }
+                }
+                
+                if isPossible {
+                    result[current] = i
+                    check[i] = true
+                    getMinInequal(A, current + 1, k, lowerBound, upperBound, &result, &check)
+                    check[i] = false
+                }
+            }
+        }
+    }
+}
+
+func solution() -> Void {
+    //MARK: - Input
+    guard let k: Int = Int(readLine() ?? "0") else { return }
+    guard let A: [String] = readLine()?.components(separatedBy: " ") else { return }
+    let lowerBound: Int = 0
+    let upperBound: Int = 9
+    
+    var result: [Int] = Array(repeating: 0, count: k + 1)
+    var check: [Bool] = Array(repeating: false, count: upperBound + 1)
+    
+    //MARK: - Process & Output
+    getMaxInequal(A, 0, k, lowerBound, upperBound, &result, &check)
+    
+    check = Array(repeating: false, count: upperBound + 1)
+    flag = false
+    
+    getMinInequal(A, 0, k, lowerBound, upperBound, &result, &check)
+}
+solution()
