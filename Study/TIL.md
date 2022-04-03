@@ -448,3 +448,30 @@
     6. Stack Overflow : Stack은 정해진 크기가 있어, 용량이 다 찼음에도 불구하고 데이터를 삽입할 경우 Stack Overflow에러 발생
     7. Stack Underflow : Stack이 비었음에도 불구하고 데이터를 삭제하려고 하는 경우
 </pre>
+
+## 큐(Queue)
+<pre>
+    1. Stack과 함께 Computer Science의 기초 자료구조 중 하나
+    2. First In First Out(FIFO) 구조
+    3. Linear(선형) 자료구조
+    4. Queue Overflow : Queue의 용량보다 데이터를 더 넣으려고 하는 경우
+    5. Queue Underflow : Queue에 데이터가 없는데 데이터를 삭제하려고 하는 경우
+    6. 단순 투 포인터로 큐를 구현하게 되는 경우 push / pop 연산시 두 포인터가 모두 증가만 하게되므로. 앞의 공간에 대한 낭비가 발생할 수 있음
+</pre>
+
+### 원형 큐의 개념과 구현방법(Circular Queue)
+<pre>
+    1. 선형큐의 공간 낭비의 단점을 해결하기 위한 큐
+    2. 선형큐에 비해 공간 활용 능력이 우수
+    3. 원소의 개수를 유지하는 별도의 변수가 필요함
+    4. front, rear 투 포인터가 끝에 도달하게되면 push / pop 연산시 다시 처음으로 되돌리는 원형의 형태
+</pre>
+
+## 스택 & 큐 정리(Stack & Queue Summary)
+<pre>
+    1. 특정 자료구조가 무엇인지 아는 것은 중요하지 않고, 의도에 맞게 사용하는 능력이 중요함
+    2. 올바른 괄호 판단 문제는 대표적인 stack 자료구조를 활용하는 문제
+    3. Stack과 Queue에는 상태(status) 즉, 해야하는 작업이 저장됨
+    4. Stack의 경우, 함수 호출에 대한 복귀 주소 즉, 발자취를 기록을 해두며, 이를 Call Stack이라고 함(Stack의 Scheduling, 재귀호출)
+    5. Queue의 경우, Stack과 달리 상태의 의존관계가 없을 때, 즉 해야 하는 작업을 진행할 때 다른 작업에 영향을 받지 않고 순서대로 처리하며, 대표적으로 스케쥴링, 병렬화에 많이 사용됨
+</pre>
