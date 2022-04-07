@@ -2,68 +2,64 @@
 //  main.swift
 //  GoodSeq
 //
-//  Created by 이영재 on 2021/10/20.
-//MARK: - goodSeq
+//  Created by 이영재 on 2022/04/07.
+//MARK: - goodseq
 
-//MARK: - Values
-var N: Int
-var result: Array<Int> = []
+//MARK: - Framework
+import Foundation
+
+//MARK: - Variable
 var isFinished: Bool = false
 
-//MARK: - function
-func isPossible(_ x: Int, _ length: Int) -> Bool {
-    //앞의 숫자들은 전부 좋은 수열의 조건을 만족하면서 등록을 진행하므로, 하나라도 다른 숫자가 있으면 true 반환
-    for i in 0..<length {
-        if result[x - i] != result[x - i - length] {
-            return true
+//MARK: - Function
+func isPossible(_ result: [Int], _ current: Int, _ interval: Int) -> Bool {
+    var flag: Bool = false
+    
+    for i in 0..<interval {
+        if result[current - i] != result[current - i - interval] {
+            flag = true
+            break
         }
     }
     
-    return false
+    return flag
 }
 
-//x번째 숫자를 결정하고, 인접한 length길이의 수열이 중복되지 않는지 검사 후
-//x + 1번째 숫자를 등록하는 함수
-//즉, x ~ n-1번 째 까지 숫자를 결정하는 함수(1, 2, 3으로 이루어진 수열)
-func getGoodSeq(_ x: Int, _ N: Int) -> Void {
-    if isFinished {
-        return
-    }
+func getGoodSeq(_ result: inout [Int], _ N: Int, _ current: Int) -> Void {
+    if isFinished { return }
     
-    //Base Condition
-    if (x >= N) {
-        for i in result {
-            print(i, terminator: "")
+    if current >= N {
+        var answer: String = ""
+        for number in result {
+            answer += "\(number)"
         }
-        print()
+        print(answer)
         isFinished = true
-        return
-    }
-    
-    for i in 1...3 {
-        result[x] = i
-        var flag: Bool = false
-        
-        if (x != 0) {
-            for j in 1...(x + 1) / 2 {
-                if !isPossible(x, j) {
+    } else {
+        for i in 1...3 {
+            var flag: Bool = false
+            result[current] = i
+            
+            for j in stride(from: 1, through: (current + 1) / 2, by: 1) {
+                if !isPossible(result, current, j) {
                     flag = true
                     break
                 }
             }
-        }
-        
-        if !flag {
-            getGoodSeq(x + 1, N)
+            
+            if !flag {
+                getGoodSeq(&result, N, current + 1)
+            }
         }
     }
 }
 
-//MARK: - input
-N = Int(readLine()!)!
-result = Array(repeating: 0, count: N)
-
-
-//MARK: - process & output
-getGoodSeq(0, N)
-
+func solution() -> Void {
+    //MARK: - Input
+    guard let N: Int = Int(readLine() ?? "0") else { return }
+    var result: [Int] = Array(repeating: 0, count: N)
+    
+    //MARK: - Process & Output
+    getGoodSeq(&result, N, 0)
+}
+solution()
