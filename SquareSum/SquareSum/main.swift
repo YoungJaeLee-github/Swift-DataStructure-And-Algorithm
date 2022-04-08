@@ -1,6 +1,6 @@
 //
 //  main.swift
-//  SqureSum
+//  SquareSum
 //
 //  Created by 이영재 on 2022/04/08.
 //MARK: - 직사각형의 합
