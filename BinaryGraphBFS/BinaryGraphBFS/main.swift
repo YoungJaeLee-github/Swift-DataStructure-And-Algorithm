@@ -79,4 +79,3 @@ func solution() -> Void {
     print(bfs(1) ? "Yes" : "No")
 }
 solution()
-
