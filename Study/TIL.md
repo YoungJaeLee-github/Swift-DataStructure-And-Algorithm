@@ -447,7 +447,7 @@
 
 ### 대표 정렬 알고리즘 시간 복잡도 비교(Time Complexity Of Sort Algorithm)
 
-|-|선택 정렬(Selection Sort)|삽입 정렬(Insertion Sort)|버블 정렬(Bubble Sort)|합병 정렬(Merge Sort)|퀵 정렬(Quick Sort)|
+|-|선택 정렬(Selection)|삽입 정렬(Insertion)|버블 정렬(Bubble)|합병 정렬(Merge)|퀵 정렬(Quick)|
 |---|---|---|---|---|---|
 |평균 시간복잡도|-|-|-|-|O(N log N)|
 |최악의 경우|O(N^2)|O(N^2)|O(N^2)|O(N log N)|O(N^2)|
