@@ -445,9 +445,9 @@
     2. void quickSort(array, start, end)    // array를 start번 째 값 부터 end번 째 값 까지 퀵 정렬하는 함수
 </pre>
 
-### 대표 정렬 알고리즘 시간 복잡도 비교
+### 대표 정렬 알고리즘 시간 복잡도 비교(Time Complexity Of Sort Algorithm)
 
-|정렬 알고리즘 시간복잡도|선택 정렬|삽입 정렬|버블 정렬|합병 정렬|퀵 정렬|
+|정렬 알고리즘 시간복잡도|선택 정렬(Selection Sort)|삽입 정렬(Insertion Sort)|버블 정렬(Bubble Sort)|합병 정렬(Merge Sort)|퀵 정렬(Quick Sort)|
 |---|---|---|---|---|---|
 |평균 시간복잡도|-|-|-|-|O(N log N)|
 |최악의 경우|O(N^2)|O(N^2)|O(N^2)|O(N log N)|O(N^2)|
