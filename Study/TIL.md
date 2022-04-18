@@ -35,8 +35,6 @@
     3. 즉, 자료형을 임시로 바꾸는 것을 캐스팅이라고 함
 </pre>
 
-<hr>
-</hr>
 
 <pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Input%26Output">=> 기본 입출력 예제</a></pre>
 
