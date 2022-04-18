@@ -13,7 +13,7 @@ var candidates: [Int] = []
 
 //MARK: - Function
 func getEratos(_ number: Int) -> Void {
-    for i in 2...number {
+    for i in stride(from: 2, through: number, by: 1) {
         for j in stride(from: i * 2, through: number, by: i) {
             if candidates[j] == 0 {
                 continue
@@ -28,7 +28,7 @@ func solution() -> Void {
     guard let N: Int = Int(readLine() ?? "0") else { return }
     candidates = Array(repeating: 0, count: N + 10)
     
-    for i in 2...N {
+    for i in stride(from: 2, through: N, by: 1) {
         candidates[i] = i
     }
     
