@@ -35,6 +35,14 @@
     3. 즉, 자료형을 임시로 바꾸는 것을 캐스팅이라고 함
 </pre>
 
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Input%26Output">기본 입출력 예제</a></pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Conditional">기본 조건문 예제</a></pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Loop">기본 반복문 예제</a></pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Multiple%20Loops">다중 반복문 예제</a></pre>
+
 ## 문제를 해결하기 전에 해야할 것
 <pre>
     1. 해당 문제에 맞는 설계 후 프로그래밍을 진행해야 정확하고 실수없이 해결할 수 있음
@@ -53,6 +61,8 @@
     2. 가로, 세로가 존재함
 </pre>
 
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Array">배열 예제</a></pre>
+
 ## 완전 탐색에 대한 이해(Brute-Force Algorithm)
 <pre>
     1. 문제 해결하는 방법이 여러가지가 있고, 흔히 사용하는 방법이 몇 가지가 존재함
@@ -61,6 +71,8 @@
     4. 완전 탐색을 수행하기 위해서는 모든 경우가 무엇인지 파악하는 것이 중요함
     5. 문제를 접했을 때 가장 먼저 접근해봐야 하는 알고리즘 
 </pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Brute-Force%20Algorithm">완전 탐색 알고리즘 예제</a></pre>
 
 ## 정렬(Sort)
 <pre>
@@ -123,6 +135,8 @@
         }
     }
 </pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Sort%20Algorithm">정렬 알고리즘 예제</a></pre>
 
 ## 시간 복잡도(Time Complexity)
 <pre>
@@ -198,6 +212,8 @@
         }
     }
 </pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Number%20Theory">기본 정수론 예제</a></pre>
 
 ## 문자형 변수(Character)
 <pre>
@@ -293,6 +309,8 @@
     solution()
 </pre>
 
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/String%20Algorithm">문자열 예제</a></pre>
+
 ## 재귀함수(Recursive Function)
 <pre>
     1. 자기자신을 부르는 함수
@@ -317,6 +335,8 @@
     4. 함수가 제대로 동작한다고 가정하고 함수를 완성함
 </pre>
 
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Recursive%20Function">재귀함수 예제</a></pre>
+
 ## Back-tracking(Advanced Brute-Force Algorithm)
 <pre>
     1. 모든 경우를 시도해 보는 코드를 구현하기가 까다로운 경우
@@ -340,6 +360,8 @@
         }
     }
 </pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Back-tracking%28Advanced%20Brute-Force%29">Back-tracking 예제</a></pre>
 
 ## 고급 정렬(Advanced Sort)
 <pre>
@@ -383,6 +405,8 @@
     2. void quickSort(array, start, end)    // array를 start번 째 값 부터 end번 째 값 까지 퀵 정렬하는 함수
 </pre>
 
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Sort%20Algorithm">고급 정렬 알고리즘 예제</a></pre>
+
 ## 이진 탐색(Binary Search)
 <pre>
     1. 탐색 : 특정 값을 찾음
@@ -406,6 +430,8 @@
     2. 원래의 값들을 대신할 수 있는 매개변수들이 정렬되어 있는 경우 사용할 수 있음
     3. 원래의 값들을 통해 매개 변수를 구하기 위한 별도 작업이 필요함
 </pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Binary%20Search">이진 탐색 예제</a></pre>
 
 ## 기본 자료구조(Basic Data-Structure)
 <pre>
@@ -476,6 +502,10 @@
     5. Queue의 경우, Stack과 달리 상태의 의존관계가 없을 때, 즉 해야 하는 작업을 진행할 때 다른 작업에 영향을 받지 않고 순서대로 처리하며, 대표적으로 스케쥴링, 병렬화에 많이 사용됨
 </pre>
 
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Stack">스택 예제</a></pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Queue">큐 예제</a></pre>
+
 ## 트리(Tree)
 <pre>
     1. 트리 역시 자료를 담는 Computer Science의 기초 자료구조 중 하나
@@ -532,6 +562,8 @@
    2. 힙의 경우 완전이진트리이기 때문에, 배열을 이용하여 구현할 수 있음
 </pre>
 
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Tree">트리 예제</a></pre>
+
 ## 문제 해결의 절차
 <pre>
     1. 문제를 정확히 이해한다.
@@ -558,6 +590,8 @@
     4. 합병 정렬, 퀵 정렬이 대표적인 예
     5. 분할 정복법은 소문제도 분할 정복법으로 해결하기 때문에 재귀호출과 관련이 깊음(재귀호출을 이용하여 구현하는 경우가 많음)
 </pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Divide%26Conquer%20Algorithm">분할 정복 예제</a></pre>
 
 ## 기초 동적 계획법(Basic Dynamic Programming)
 <pre>
@@ -591,6 +625,8 @@
     2. 문제가 "재귀적으로 해결되는지"(나를 통해 나를 해결할 수 있는지)를 볼 줄 알아야 함
     3. 무조건 많은 예제를 풀어보아야 함
 </pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Dynamic%20Programming">동적 계획법 예제</a></pre>
 
 ## 그래프(Graph)
 <pre>
@@ -719,3 +755,5 @@
     5. 간선의 방향이 반대인 그래프에 대해 가장 나중에 빠져 나온 단말 노드 부터 다시 한번 DFS를 적용하게 되면, SCC를 구할 수 있음(서로 오고갈 수 있는 경로가 존재하는 노드들끼리 이루어진 그래프와, 그 개수)
     6. 따라서 코사라주 알고리즘은 DFS를 2번 적용한 알고리즘으로써 O(V + E) 시간복잡도를 가짐
 </pre>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Graph%20Algorithm">그래프 예제</a></pre>
