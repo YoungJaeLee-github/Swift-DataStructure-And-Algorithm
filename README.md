@@ -89,15 +89,13 @@
 
 </br>
 
-<a href="https://www.google.com/" target="_blank">구글</a>
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Input%26Output">=> 기본 입출력 예제</a></pre>
 
-<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Input%26Output" target="_blank">=> 기본 입출력 예제</a></pre>
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Conditional">=> 기본 조건문 예제</a></pre>
 
-<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Conditional" target="_blank">=> 기본 조건문 예제</a></pre>
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Loop">=> 기본 반복문 예제</a></pre>
 
-<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Loop" target="_blank">=> 기본 반복문 예제</a></pre>
-
-<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Multiple%20Loops" target="_blank">=> 다중 반복문 예제</a></pre>
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Multiple%20Loops">=> 다중 반복문 예제</a></pre>
 
 <hr>
 </hr>
@@ -756,7 +754,7 @@
 
 </br>
 
-<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Dynamic%20Programming" target="_blank">=> 동적 계획법 예제</a></pre>
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Dynamic%20Programming">=> 동적 계획법 예제</a></pre>
 
 <hr>
 </hr>
