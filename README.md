@@ -1,4 +1,4 @@
-# Swift Data Structure And Algorithm by YoungJae Lee
+# Swift Data Structure And Algorithm
 
 ## I. Swift Language Coding Interview 관련 기본 Tip
 
