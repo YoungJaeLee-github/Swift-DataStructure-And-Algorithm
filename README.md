@@ -89,9 +89,7 @@
 
 </br>
 
-<pre>
-    [새 탭에서 열기](https://www.google.com/){:target="_blank"}
-</pre>
+[새 탭에서 열기](https://www.google.com/){:target="_blank"}
 
 <pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Basic%20Input%26Output" target="_blank">=> 기본 입출력 예제</a></pre>
 
