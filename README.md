@@ -1,12 +1,54 @@
-## Swift5 N x M 크기의 2차원 배열 생성 방법
+## Swift Language Coding Interview 관련 기본 Tip
+### 기본 입력(Input)/출력(Output)
 <pre>
-    let array: [[Int]] = Array(repeating: Array(repeating: 0, count: m), count: n)
+    1. Swift에서 기본 입력은 readLine(), 즉 줄단위 String 형태로 입력을 받음
+    2. 따라서 상황에 맞게 Optional unwrapping, Optional Chaining, nil 병합 연산자 등을 적절히 사용하여 Casting 해주어야 함
+    3. 가령 정수 자료형을 입력 받아야 하는 경우, if let number = Int(readLine() ?? "0") { }
+    4. 함수 안에서 사용시, guard let input: Int = Int(readLine() ?? "0") else { return }
+    5. print() 함수 사용시, 기본으로 "\n"개행 문자가 추가되기 때문에 줄바꿈 없이 출력하고 싶은 경우, print(data, terminator: "")와 같이 사용할 수 있음
+    6. 또 가령, 배열의 원소를 공백을 두고 줄바꿈 없이 출력하고 싶을 때, for number in array { print("\(number) ", terminator: "")처럼 "\() " 문자열 보간법을 이용할 수 있음
 </pre>
 
-## Swift5 for문 거꾸로 순회하는 방법
+### Swift의 N x M 크기의 2차원 배열 생성 방법
+<pre>
+    let array: [[Int]] = Array(repeating: Array(repeating: 0, count: M), count: N)
+</pre>
+
+### Swift의 for 반복문 거꾸로 / 혹은 원하는 범위내에 원하는 만큼 증감하면서 순회하는 방법
 <pre>
     1. 마지막 순서를 포함하지 않는 경우 - for i in stride(from: 5, to: 0, by: -1) // 5, 4, 3, 2, 1
     2. 마지막 순서를 포함하는 경우 - for i in stride(from: 5, through: 0, by: -1) // 5, 4, 3, 2, 1, 0
+    3. 필자는 for i in 1...N과 같은 반복 문의 경우 N이 1보다 작을 경우에 Error가 발생하기 때문에 stride를 사용하여 반복문을 구현하는 경우도 있음 -> for i in(from: 1, through: N, by: 1)
+</pre>
+
+### Swift String(문자열)내 각 Character(문자) 접근 방법
+<pre>
+    1. 단순히 for 반복문을 이용할 수 있음 for char in str { print(char) }
+    2. index가 필요한 경우에는 for i in 0 ~ str.count - 1 { print(str[str.index(str.startIndex, offsetBy: i)]) }
+</pre>
+
+### Swift Character Ascii code 연산
+<pre>
+    1. Swift의 Character는 struct으로 구현되어 있고, 그 내부에 연산 프로퍼티로 asciiValue가 존재함
+    2. 위 asciiValue 연산 프로퍼티는 UInt8 자료형, 따라서 character.asciiValue를 하게 되면, Optional 형태의 Ascii code 값을 얻을 수 있음
+    3. 반대로 asciiValue를 통해 Character로 변환하려면 Casting을 해주어야 하는데 이때, UnicodeScalar를 통해 Character로 Casting 할 수 있음
+</pre>
+
+#### Swift Character -> Ascii code(UInt8)
+<pre>
+    let alpha: Character = "A"
+    let ascii: UInt8 = alpha.asciiValue ?? 0
+    
+    print(ascii)    // 65
+</pre>
+
+#### Swift Ascii code(UInt8) -> Character
+<pre>
+    let alpha: Character = "a"
+    let ascii: UInt8 = alpha.asciiValue ?? 0
+    let asciiToAlpha: Character = Character(UnicodeScalar(ascii - 32))
+    
+    print(asciiToAlpha) // A
 </pre>
 
 ## 컴퓨터를 공부하면서 반드시 숙지해야 할 것
