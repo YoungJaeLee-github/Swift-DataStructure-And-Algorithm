@@ -37,7 +37,7 @@
     3. 반대로 asciiValue를 통해 Character로 변환하려면 Casting을 해주어야 하는데 이때, UnicodeScalar를 통해 Character로 Casting 할 수 있음
 </pre>
 
-#### 6. Swift Character -> Ascii code(UInt8)
+#### 5.1. Swift Character -> Ascii code(UInt8)
 <pre>
     let alpha: Character = "A"
     let ascii: UInt8 = alpha.asciiValue ?? 0
@@ -45,7 +45,7 @@
     print(ascii)    // 65
 </pre>
 
-#### 7. Swift Ascii code(UInt8) -> Character
+#### 5.2. Swift Ascii code(UInt8) -> Character
 <pre>
     let alpha: Character = "a"
     let ascii: UInt8 = alpha.asciiValue ?? 0
