@@ -1,10 +1,5 @@
 # Swift Data Structure And Algorithm by YoungJae Lee
 
-<hr>
-</hr>
-
-</br>
-
 ## I. Swift Language Coding Interview 관련 기본 Tip
 
 ### 1. 기본 입력(Input)/출력(Output)
