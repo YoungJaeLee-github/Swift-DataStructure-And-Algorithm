@@ -893,3 +893,14 @@
 
 <hr>
 </hr>
+
+### 시뮬레이션(Simulation)
+<pre>
+</pre>
+
+</br>
+
+<pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Simulation">=> 시뮬레이션(Simulation) 예제</a></pre>
+
+<hr>
+</hr>
