@@ -15,15 +15,19 @@ func solution() -> Void {
     let N: Int = input.map { Int($0) }[0] ?? 0
     let M: Int = input.map { Int($0) }[1] ?? 0
     let q: Int = input.map { Int($0) }[2] ?? 0
-    var y: Int = 0, x: Int = 0
-    var array: [[Int]] = []
+    let dy: [Int] = [0, 0, 1, -1]
+    let dx: [Int] = [1, -1, 0, 0]
+    var y: Int = 1, x: Int = 1
+    var array: [[Int]] = Array(repeating: Array(repeating: -1, count: M + 10), count: N + 10)
     var answer: String = ""
     
-    for _ in 0..<N {
+    for i in stride(from: 1, through: N, by: 1) {
         guard let inputArray: [String] = readLine()?.components(separatedBy: " ") else { return }
         let numbers: [Int] = inputArray.map { Int($0) ?? 0 }
         
-        array.append(numbers)
+        for j in stride(from: 1, through: M, by: 1) {
+            array[i][j] = numbers[j - 1]
+        }
     }
     
     //MARK: - Process
@@ -32,40 +36,16 @@ func solution() -> Void {
         let d: Int = inputData.map { Int($0) }[0] ?? 0
         let r: Int = inputData.map { Int($0) }[1] ?? 0
         
-        switch d {
-        case 0:
-            for _ in 0..<r {
-                if x + 1 >= M || array[y][x + 1] == -1 {
-                    break
-                }
-                x += 1
+        for _ in 0..<r {
+            let ny: Int = y + dy[d]
+            let nx: Int = x + dx[d]
+            
+            if array[ny][nx] == -1 {
+                break
             }
-        case 1:
-            for _ in 0..<r {
-                if x - 1 < 0 || array[y][x - 1] == -1 {
-                    break
-                }
-                
-                x -= 1
-            }
-        case 2:
-            for _ in 0..<r {
-                if y + 1 >= N || array[y + 1][x] == -1 {
-                    break
-                }
-                
-                y += 1
-            }
-        case 3:
-            for _ in 0..<r {
-                if y - 1 < 0 || array[y - 1][x] == -1 {
-                    break
-                }
-                
-                y -= 1
-            }
-        default:
-            break
+            
+            y = ny
+            x = nx
         }
         
         answer += "\(array[y][x])\n"
