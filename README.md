@@ -13,9 +13,10 @@
 </pre>
 
 ### 2. Swift의 N x M 크기의 2차원 배열 생성 방법
-<pre>
+
+```swift
     let array: [[Int]] = Array(repeating: Array(repeating: 0, count: M), count: N)
-</pre>
+```
 
 ### 3. Swift의 for 반복문 거꾸로 / 혹은 원하는 범위내에 원하는 만큼 증감하면서 순회하는 방법
 <pre>
@@ -25,10 +26,21 @@
 </pre>
 
 ### 4. Swift String(문자열)내 각 Character(문자) 접근 방법
-<pre>
-    1. 단순히 for 반복문을 이용할 수 있음 for char in str { print(char) }
-    2. index가 필요한 경우에는 for i in 0 ~ str.count - 1 { print(str[str.index(str.startIndex, offsetBy: i)]) }
-</pre>
+#### 4.1. 단순히 for 반복문을 이용
+
+```swift
+    for char in str { 
+        print(char) 
+    }
+```
+
+#### 4.2. index가 필요한 경우
+
+```swift
+    for i in 0..<str.count { 
+        print(str[str.index(str.startIndex, offsetBy: i)]) 
+    }
+```
 
 ### 5. Swift Character Ascii code 연산
 <pre>
@@ -47,13 +59,14 @@
 ```
 
 #### 5.2. Swift Ascii code(UInt8) -> Character
-<pre>
+
+```swift
     let alpha: Character = "a"
     let ascii: UInt8 = alpha.asciiValue ?? 0
     let asciiToAlpha: Character = Character(UnicodeScalar(ascii - 32))
     
     print(asciiToAlpha) // A
-</pre>
+```
 
 <hr>
 </hr>
@@ -151,14 +164,17 @@
 
 ### 9.1 기본적인 정렬 알고리즘의 종류
 #### 9.1.1. 선택정렬(Selection Sort)
+
 <pre>
     1. 최솟값을 맨 앞으로 이동시킴(오름차순)
     2. 왼쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
-    
-    for i in 0 ~ (N - 1) {
+</pre>
+
+```swift
+    for i in 0...N - 1 {
         var index: Int = i
-        for j in (i + 1) ~ N {
+        for j in (i + 1)...N {
             if data[index] > data[j] {
                 index = j
             }
@@ -168,15 +184,17 @@
         data[index] = data[i]
         data[i] = temp
     }
-</pre>
+```
 
 #### 9.1.2. 삽입정렬(Insertion Sort)
 <pre>
     1. 원소를 차례대로 정렬된 배열에 삽입시킴
     2. 왼쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
+</pre>
     
-    for i in 1 ~ (N - 1) {
+```swift    
+    for i in 1...(N - 1) {
         for j in stride(from: i, to: 0, by: -1) {
             if data[j] < data[j - 1] {
                 let temp: Int = data[j]
@@ -185,14 +203,16 @@
             }
         }
     }
-</pre>
+```
 
 #### 9.1.3. 버블정렬(Bubble Sort)
 <pre>
     1. 인접한 원소를 비교하여 큰 수를 뒤로 보냄
     2. 오른쪽은 정렬이 모두 되었다는 의미
     3. O(N^2)의 시간복잡도를 가짐
-    
+</pre>
+
+```swift 
     for i in stride(from: N - 1, to: 0, by: - 1) {
         for j in 0 ~ (i - 1) {
             if data[j] > data[j + 1] {
@@ -202,7 +222,7 @@
             }
         }
     }
-</pre>
+```swift
 
 </br>
 
@@ -257,34 +277,37 @@
     3. 최대공약수(GCD, Greatest Common Divisor) : A의 약수 이면서 동시에 B의 약수인 수 중 가장 큰 수
     4. 최소공배수(LCM, Least Common Multiple) : A의 배수 이면서 동시에 B의 배수인 수 중 가장 작은 수
     5. 유클리드 호제법 : 최대공약수를 구하기 위한 알고리즘
-    
+</pre>
+
+```swift
     func getGCD(_ a: Int, _ b: Int) -> Int {
         return a % b == 0 ? b : getGCD(b, a % b)
     }
-}
-</pre>
+```
 
 ### 11.6. 파스칼 삼각형
 <pre>
     1. 왼쪽 오른쪽 각 대각선 위의 수를 합하여 자신을 결정하는 형태
     2. 조합과 관련이 있음
     3. 경우의 수 문제에서 숫자가 굉장히 큰 경우 활용할 수 있음. 가령, 20 C 10의 끝 3자리 수를 구하는 경우(파스칼 삼각형을 구성할 때, % 1000 연산 하면 됨)
-    
+</pre>
+
+```swift    
     func getPascalTriangle() -> Void {
         let N: Int
         var pascal: [[Int]] = [N + 10][N + 10]
         pascal[0][0] = 1
         
-        for i in 1 ~ N {
+        for i in 1...N {
             pascal[i][0] = 1
             pascal[i][i] = 1
             
-            for j in 1 ~ (i - 1) {
+            for j in 1...(i - 1) {
                 pascal[i][j] = pascal[i - 1][j - 1] + pascal[i - 1][j]
             }
         }
     }
-</pre>
+```
 
 </br>
 
@@ -369,7 +392,9 @@
     1. Swift에서 Array는 struct 즉, 값 타입이기 때문에 전달인자로 전달될 때 값이 복사돼서 넘어감
     2. Call By Value를 Call By Reference 처럼 사용할 수 있는 방법이 있지만, 권장하지 않음
     3. 단, 아래와 같이 정확한 목적이 있는 경우에는 inout 키워드와 &(주소)값을 넘김으로써 사용할 수도 있음
-    
+</pre>
+
+```swift    
     func swap(_ a: inout Int, _ b: inout Int) -> Void {
         let temp: Int = a
         a = b
@@ -385,7 +410,7 @@
         print(a, b) // 10, 5
     }
     solution()
-</pre>
+```
 
 </br>
 
@@ -434,7 +459,8 @@
 </pre>
 
 ### 22.1. Back-tracking Idea
-<pre>
+
+```swift
     doRecursion(int x) {
         //x 번째 for문을 실행
         if x > n
@@ -447,7 +473,7 @@
             }
         }
     }
-</pre>
+```
 
 </br>
 
