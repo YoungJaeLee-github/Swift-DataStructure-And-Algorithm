@@ -62,7 +62,7 @@
 #### 3.3. for i in 1...N 사용시, 시작 범위보다 끝 범위가 작을 경우 Error 방지(원하는 범위내에 원하는 만큼 증감)
 
 ```swift
-    for i in(from: 1, through: N, by: 1) {
+    for i in stride(from: 1, through: N, by: 1) {
         // code
     }
 ```
@@ -256,7 +256,7 @@
 
 ```swift 
     for i in stride(from: N - 1, to: 0, by: - 1) {
-        for j in 0 ~ (i - 1) {
+        for j in 0...(i - 1) {
             if data[j] > data[j + 1] {
                 let temp: Int = data[j]
                 data[j] = data[j + 1]
@@ -503,7 +503,7 @@
 ### 22.1. Back-tracking Idea
 
 ```swift
-    doRecursion(int x) {
+    func doRecursion(_ x: Int) -> Void {
         //x 번째 for문을 실행
         if x > n {
             print(numbers)
