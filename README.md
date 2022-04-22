@@ -6,11 +6,34 @@
 <pre>
     1. Swift에서 기본 입력은 readLine(), 즉 줄단위 String 형태로 입력을 받음
     2. 따라서 상황에 맞게 Optional unwrapping, Optional Chaining, nil 병합 연산자 등을 적절히 사용하여 Casting 해주어야 함
-    3. 가령 정수 자료형을 입력 받아야 하는 경우, if let number = Int(readLine() ?? "0") { }
-    4. 함수 안에서 사용시, guard let input: Int = Int(readLine() ?? "0") else { return }
-    5. print() 함수 사용시, 기본으로 "\n"개행 문자가 추가되기 때문에 줄바꿈 없이 출력하고 싶은 경우, print(data, terminator: "")와 같이 사용할 수 있음
-    6. 또 가령, 배열의 원소를 공백을 두고 줄바꿈 없이 출력하고 싶을 때, for number in array { print("\(number) ", terminator: "")처럼 "\() " 문자열 보간법을 이용할 수 있음
+    3. print() 함수 사용시, 기본으로 "\n"개행 문자가 추가됨
 </pre>
+
+#### 1.1. 정수 자료형을 입력 받아야 하는 경우
+
+```swift
+    if let number = Int(readLine() ?? "0") { }
+```
+
+#### 1.2. 함수 안에서 정수 자료형을 입력 받아야 하는 경우
+
+```swift
+    guard let input: Int = Int(readLine() ?? "0") else { return }
+```
+
+#### 1.3. print() 사용시, 줄바꿈 없이("\n") 출력해야 하는 경우
+
+```swift
+    print(data, terminator: "")
+```
+
+#### 1.4. 배열의 원소를 공백을 두고 줄바꿈 없이 출력해야 하는 경우 -> "\() " 문자열 보간법 사용
+
+```swift
+    for number in array { 
+        print("\(number) ", terminator: "")
+    }
+```
 
 ### 2. Swift의 N x M 크기의 2차원 배열 생성 방법
 
@@ -19,11 +42,30 @@
 ```
 
 ### 3. Swift의 for 반복문 거꾸로 / 혹은 원하는 범위내에 원하는 만큼 증감하면서 순회하는 방법
-<pre>
-    1. 마지막 순서를 포함하지 않는 경우 - for i in stride(from: 5, to: 0, by: -1) // 5, 4, 3, 2, 1
-    2. 마지막 순서를 포함하는 경우 - for i in stride(from: 5, through: 0, by: -1) // 5, 4, 3, 2, 1, 0
-    3. 필자는 for i in 1...N과 같은 반복 문의 경우 N이 1보다 작을 경우에 Error가 발생하기 때문에 stride를 사용하여 반복문을 구현하는 경우도 있음 -> for i in(from: 1, through: N, by: 1)
-</pre>
+#### 3.1. 마지막 순서를 포함하지 않는 경우
+
+```swift
+    for i in stride(from: 5, to: 0, by: -1) {
+        print("\(i) ", terminator: "")  // 5 4 3 2 1 
+    }
+```
+
+#### 3.2. 마지막 순서를 포함하는 경우
+
+```swift
+    for i in stride(from: 5, through: 0, by: -1) {
+        print("\(i) ", terminator: "")  // 5 4 3 2 1 0
+    }
+}
+```
+
+#### 3.3. for i in 1...N 사용시, 시작 범위보다 끝 범위가 작을 경우 Error 방지(원하는 범위내에 원하는 만큼 증감)
+
+```swift
+    for i in(from: 1, through: N, by: 1) {
+        // code
+    }
+```
 
 ### 4. Swift String(문자열)내 각 Character(문자) 접근 방법
 #### 4.1. 단순히 for 반복문을 이용
@@ -222,7 +264,7 @@
             }
         }
     }
-```swift
+```
 
 </br>
 
@@ -463,9 +505,9 @@
 ```swift
     doRecursion(int x) {
         //x 번째 for문을 실행
-        if x > n
+        if x > n {
             print(numbers)
-        else {
+        } else {
             for i = 1 ~ n {
                 if 아직 숫자 i가 없다면,
                 x번째 for에서 숫자 i를 등록하고,
