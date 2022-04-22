@@ -39,18 +39,12 @@
 
 #### 5.1. Swift Character -> Ascii code(UInt8)
 
-```javascript
-if (gameIsFun) {
-return true;
-}
-```
-
-<pre>
+```swift
     let alpha: Character = "A"
     let ascii: UInt8 = alpha.asciiValue ?? 0
     
     print(ascii)    // 65
-</pre>
+```
 
 #### 5.2. Swift Ascii code(UInt8) -> Character
 <pre>
