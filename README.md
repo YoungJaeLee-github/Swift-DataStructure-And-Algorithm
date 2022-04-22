@@ -485,6 +485,12 @@
     4. 함수가 제대로 동작한다고 가정하고 함수를 완성함
 </pre>
 
+```swift
+    func getFactorial(_ N: Int) -> Int {
+        return N == 0 ? 1 : N * getFactorial(N - 1)
+    }
+```
+
 </br>
 
 <pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Recursive%20Function">=> 재귀함수 예제</a></pre>
@@ -553,6 +559,56 @@
     2. void mergeSort(array, start, end)    // array를 start번 째 값 부터 end번 째 값 까지 합병 정렬하는 함수
 </pre>
 
+```swift
+    var array: [Int] = [-1, 2, 5, 10, 8]
+    var tempArray: [Int] = Array(repeating: 0, count: array.count + 10)
+    
+    func mergeing(_ s1: Int, _ s2: Int, _ e1: Int, _ e2: Int) -> Void {
+        var p: Int = s1, q: Int = s2, tempIndex: Int = 0
+        
+        while p <= e1 && q <= e2 {
+            if array[p] < array[q] {
+                tempArray[tempIndex] = array[p]
+                tempIndex += 1
+                p += 1
+            } else {
+                tempArray[tempIndex] = array[q]
+                tempIndex += 1
+                q += 1
+            }
+        }
+        
+        if p > e1 {
+            for i in stride(from: q, through: e2, by: 1) {
+                tempArray[tempIndex] = array[i]
+                tempIndex += 1
+            }
+        } else {
+            for i in stride(from: p, through: e1, by: 1) {
+                tempArray[tempIndex] = array[i]
+                tempIndex += 1
+            }
+        }
+        
+        for i in stride(from: s1, through: e2, by: 1) {
+            array[i] = tempArray[i - s1]
+        }
+    }
+    
+    func mergeSort(_ start: Int, _ end: Int) -> Void {
+        //array의 start 부터 end까지 합병정렬 하는 함수
+        if start >= end {
+            return
+        }
+        
+        let mid: Int = (start + end) / 2
+        mergeSort(start, mid)
+        mergeSort(mid + 1, end)
+        
+        merging(start, mid, mid + 1, end)
+    }
+```
+
 ### 23.3. 퀵 정렬(Quick Sort)
 <pre>
     1. 재귀호출을 이용함
@@ -565,6 +621,56 @@
     1. 재귀함수이므로, 재귀함수 디자인 규칙을 따름
     2. void quickSort(array, start, end)    // array를 start번 째 값 부터 end번 째 값 까지 퀵 정렬하는 함수
 </pre>
+
+```swift
+    func getLeft(_ array: [Int], _ start: Int, _ end: Int, _ pivot: Int, _ left: inout [Int]) -> Int {
+        var index: Int = 0
+        for i in start...end {
+            if array[i] <= pivot {
+                left[index] = array[i]
+                index += 1
+            }
+        }
+    
+        return index
+    } 
+
+    func getRight(_ array: [Int], _ start: Int, _ end: Int, _ pivot: Int, _ right: inout [Int]) -> Int {
+        var index: Int = 0
+        for i in start...end {
+            if array[i] > pivot {
+                right[index] = array[i]
+                index += 1
+            }
+        }
+    
+        return index
+    }
+
+    func quickSort(_ array: inout [Int], _ left: inout [Int], _ right: inout [Int], _ start: Int, _ end: Int) {
+        //array의 start 번 째 값 부터 end 번 째 값 까지 퀵 정렬 하는 함수
+        if start >= end {
+            return
+        }
+        
+        let pivot: Int = array[start]
+        let leftCount: Int = getLeft(array, start + 1, end, pivot, &left)
+        let rightCount: Int = getRight(array, start + 1, end, pivot, &right)
+        
+        for i in 0..<leftCount {
+            array[start + i] = left[i]
+        }
+        
+        array[start + leftCount] = pivot
+        
+        for i in 0..<rightCount {
+            array[start + leftCount + 1 + i] = right[i]
+        }
+        
+        quickSort(&array, &left, &right, start, start + leftCount - 1)
+        quickSort(&array, &left, &right, start + leftCount + 1, end)
+    }
+```
 
 ### 23.4. 대표 정렬 알고리즘 시간 복잡도 비교(Time Complexity Of Sort Algorithm)
 
@@ -596,6 +702,21 @@
     3. 재귀함수 : int binarySearch(array, start, end, value)    //  array의 start번째 값 부터 end번째 값 중 value를 찾는 함수
     4. 단순 반복문 : 투 포인터(start, end)를 활용하여 구현
 </pre>
+
+```swift
+    func binarySearch(_ array: [Int], _ start: Int, _ end: Int, _ value: Int) -> Bool {
+        if start >= end {
+            return array[start] == value ? true : false
+        }
+        
+        let mid: Int = (start + end) / 2
+        if array[mid] == value {
+            return true
+        }
+        
+        return array[mid] < value ? binarySearch(array, mid + 1, end, value) : binarySearch(array, start, mid - 1, value)
+    }
+```
 
 ### 24.2. 매개 변수 탐색(Parametric Search)
 <pre>
@@ -655,6 +776,46 @@
     7. Stack Underflow : Stack이 비었음에도 불구하고 데이터를 삭제하려고 하는 경우
 </pre>
 
+```swift
+    //MARK: - Type
+    struct Stack {
+        //MARK: - Property
+        var array: [Int]
+        var len: Int
+        var capacity: Int
+        
+        //MARK: - Initializer
+        init(_ capacity: Int) {
+            self.capacity = capacity
+            self.array = Array(repeating: 0, count: capacity)
+            self.len = 0
+        }
+        
+        //MARK: - Method
+        mutating func push(_ data: Int) -> Void {
+            if len >= capacity {
+                print("Overflow")
+            } else {
+                self.array[self.len] = data
+                self.len += 1
+            }
+        }
+        
+        mutating func pop() -> Void {
+            if self.len <= 0 {
+                print("Underflow")
+            } else {
+                self.array[self.len - 1] = 0
+                self.len -= 1
+            }
+        }
+        
+        func top() -> Int {
+            return self.len <= 0 ? -1 : self.array[len - 1]
+        }
+    }
+```
+
 ### 27. 큐(Queue)
 <pre>
     1. Stack과 함께 Computer Science의 기초 자료구조 중 하나
@@ -672,6 +833,52 @@
     3. 원소의 개수를 유지하는 별도의 변수가 필요함
     4. front, rear 투 포인터가 끝에 도달하게되면 push / pop 연산시 다시 처음으로 되돌리는 원형의 형태
 </pre>
+
+```swift
+    //MARK: - Type
+    struct Queue {
+        //MARK: - Property
+        private var array: [Int]
+        private var f: Int
+        private var r: Int
+        private var capacity: Int
+        
+        //MARK: - Initializer
+        init(_ capacity: Int) {
+            self.capacity = capacity
+            self.array = Array(repeating: 0, count: capacity)
+            self.f = 0
+            self.r = 0
+        }
+        
+        //MARK: - Method
+        mutating func push(_ data: Int) -> Void {
+            if self.r >= self.capacity {
+                print("Overflow")
+            } else {
+                self.array[self.r] = data
+                self.r += 1
+            }
+        }
+        
+        mutating func pop() -> Void {
+            if self.r - self.f <= 0 {
+                print("Underflow")
+            } else {
+                self.array[self.f] = 0
+                self.f += 1
+            }
+        }
+        
+        func front() -> Int {
+            return self.r - self.f <= 0 ? -1 : self.array[self.f]
+        }
+        
+        func size() -> Int {
+            return self.r - self.f
+        }
+    }
+```
 
 ### 27.2. 스택 & 큐 정리(Stack & Queue Summary)
 <pre>
@@ -716,6 +923,52 @@
     5. 세가지 순회방법이 목적은 트리 내의 자료를 탐색하는 것으로 같지만, 특성이 다름
 </pre>
 
+```swift
+    //MARK: - Type
+    struct Node {
+        //MARK: - Property
+        var left: Int
+        var right: Int
+        
+        //MARK: - Initializer
+        init(_ left: Int, _ right: Int) {
+            self.left = left
+            self.right = right
+        }
+    }
+
+    //MARK: - Function
+    func preOrder(_ tree: [Node], _ root: Int) -> Void {
+        if root == -1 {
+            return
+        }
+        
+        print("\(root) ", terminator: "")
+        preOrder(tree, tree[root].left)
+        preOrder(tree, tree[root].right)
+    }
+
+    func inOrder(_ tree: [Node], _ root: Int) -> Void {
+        if root == -1 {
+            return
+        }
+        
+        inOrder(tree, tree[root].left)
+        print("\(root) ", terminator: "")
+        inOrder(tree, tree[root].right)
+    }
+
+    func postOrder(_ tree: [Node], _ root: Int) -> Void {
+        if root == -1 {
+            return
+        }
+        
+        postOrder(tree, tree[root].left)
+        postOrder(tree, tree[root].right)
+        print("\(root) ", terminator: "")
+    }
+```
+
 ### 28.2. 우선순위 큐(Priority Queue)
 <pre>
     1. Tree를 활용하는 대표적인 예제
@@ -734,7 +987,126 @@
     7. 삽입 연산과 마찬가지로 root에서 최대로 트리의 높이 만큼 내려올 수 있으므로, O(log n)의 시간복잡도를 가짐  
 </pre>
 
-### 28.2.2. 우선순위 큐의 구현 요약
+### 28.2.2. 우선순위 큐 구현(배열)
+
+```swift
+    //MARK: - Type
+    struct PriorityQueue {
+        //MARK: - Property
+        private var data: [Int]
+        private var len, capacity: Int
+        
+        //MARK: - Initiailzer
+        init(_ capacity: Int) {
+            self.capacity = capacity
+            self.data = Array(repeating: 0, count: capacity + 10)
+            self.len = 0
+        }
+        
+        //MARK: - Method
+        mutating func push(_ x: Int) -> Void {
+            self.data[self.len] = x
+            self.len += 1
+        }
+        
+        mutating func pop() -> Void {
+            var min: Int = self.data[0], minIndex: Int = 0
+            for i in 0..<self.len {
+                if min > self.data[i] {
+                    min = self.data[i]
+                    minIndex = i
+                }
+            }
+            
+            for i in minIndex..<self.len {
+                self.data[i] = self.data[i + 1]
+            }
+            
+            self.len -= 1
+        }
+        
+        func top() -> Int {
+            var min: Int = self.data[0]
+            for i in 0..<self.len {
+                min = min > self.data[i] ? self.data[i] : min
+            }
+            
+            return min
+        }
+    }
+```
+
+### 28.2.3. 우선순위 큐 구현(힙)
+
+```swift
+    //MARK: - Type
+    struct PriorityQueue {
+        //MARK: - Property
+        var data: [Int]
+        var len, capacity: Int
+        
+        //MARK: - Initializer
+        init(_ capacity: Int) {
+            self.capacity = capacity
+            self.data = Array(repeating: 0, count: self.capacity + 10)
+            self.len = 1
+        }
+        
+        //MARK: - Method
+        mutating func push(_ x: Int) -> Void {
+            self.data[self.len] = x
+            self.len += 1
+            
+            var currentIndex: Int = self.len - 1
+            while currentIndex > 1 {
+                if self.data[currentIndex] < self.data[currentIndex >> 1] {
+                    let temp: Int = self.data[currentIndex]
+                    self.data[currentIndex] = self.data[currentIndex >> 1]
+                    self.data[currentIndex >> 1] = temp
+                    
+                    currentIndex >>= 1
+                } else {
+                    break
+                }
+            }
+        }
+        
+        mutating func pop() -> Void {
+            self.data[1] = self.data[self.len - 1]
+            self.data[self.len - 1] = 0
+            self.len -= 1
+            
+            var currentIndex: Int = 1
+            while true {
+                var childIndex: Int = -1
+                
+                if self.len - 1 < (currentIndex << 1) {
+                    break
+                } else if (0 < (currentIndex << 1) && (currentIndex << 1) <= self.len - 1) && (currentIndex << 1 + 1) > self.len - 1 {
+                    childIndex = currentIndex << 1
+                } else {
+                    childIndex = (currentIndex << 1) < (currentIndex << 1 + 1) ? (currentIndex << 1) : (currentIndex << 1 + 1)
+                }
+                
+                if self.data[currentIndex] > self.data[childIndex] {
+                    let temp: Int = self.data[currentIndex]
+                    self.data[currentIndex] = self.data[childIndex]
+                    self.data[childIndex] = temp
+                    
+                    currentIndex = childIndex
+                } else {
+                    break
+                }
+            }
+        }
+        
+        func top() -> Int {
+            return self.data[1]
+        }
+    }
+```
+
+### 28.2.4. 우선순위 큐의 구현 요약
 
 |-|배열|힙|
 |------|---|---|
@@ -781,6 +1153,49 @@
     5. 분할 정복법은 소문제도 분할 정복법으로 해결하기 때문에 재귀호출과 관련이 깊음(재귀호출을 이용하여 구현하는 경우가 많음)
 </pre>
 
+#### 30.1. 분할 정복 예제 - 연속 부분 최대합
+
+```swift
+    func getSubMax(_ array: [Int], _ start: Int, _ end: Int) -> Int {
+        //array의 start 부터 end 까지의 연속 부분 최대합을 반환하는 함수
+        if start >= end {
+            return array[start]
+        }
+        
+        let mid: Int = (start + end) / 2
+        let leftSubMax: Int = getSubMax(array, start, mid)
+        let rightSubMax: Int = getSubMax(array, mid + 1, end)
+        
+        var leftSum, leftMax, rightSum, rightMax, middleSubMax: Int
+        leftSum = 0
+        leftMax = -987987987
+        rightSum = 0
+        rightMax = -987987987
+        
+        for i in stride(from: mid, through: start, by: -1) {
+            leftSum += array[i]
+            
+            leftMax = leftMax < leftSum ? leftSum : leftMax
+        }
+        
+        for i in mid + 1...end {
+            rightSum += array[i]
+            
+            rightMax = rightMax < rightSum ? rightSum : rightMax
+        }
+
+        middleSubMax = leftMax + rightMax
+        
+        if leftSubMax > rightSubMax && leftSubMax > middleSubMax {
+            return leftSubMax
+        } else if rightSubMax > leftSubMax && rightSubMax > middleSubMax {
+            return rightSubMax
+        } else {
+            return middleSubMax
+        }
+    }
+```
+
 </br>
 
 <pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Divide%26Conquer%20Algorithm">=> 분할 정복 예제</a></pre>
@@ -797,6 +1212,27 @@
     5. 따라서, 작은 소문제를 먼저 모두 기억해 놓는 것이 동적 계획법의 아이디어
     6. 분할 정복법은 Top-Down Approach, 동적 계획법은 Bottom-Up Approach
 </pre>
+
+```swift
+    //MARK: - Function
+    func solution() -> Void {
+        //MARK: - Input
+        guard let n: Int = Int(readLine() ?? "0") else { return }
+        var fibonacci: [Int] = Array(repeating: 0, count: n + 10)
+        
+        //MARK: - Process
+        fibonacci[0] = 0
+        fibonacci[1] = 1
+        if n >= 2 {
+            for i in 2...n {
+                fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2]
+            }
+        }
+        
+        //MARK: - Output
+        print(fibonacci[n])
+    }
+```
 
 ### 31.1. 동적 계획법의 문제 풀이 순서
 <pre>
@@ -852,12 +1288,49 @@
     4. 인접 행렬로 그래프를 구현했을 때 단점 : 인접한 정점을 모두 찾는데 O(n)이 걸리며, n^2의 공간이 필요함
 </pre>
 
+```swift
+    func solution() -> Void {
+        guard let input: [String] = readLine()?.components(separatedBy: " ") else { return }
+        
+        let n: Int = input.map { Int($0) }[0] ?? 0
+        let m: Int = input.map { Int($0) }[1] ?? 0
+        var myGraph: [[Int]] = Array(repeating: Array(repeating:0, count: n + 10), count: n + 10)
+        
+        for _ in 0..<m {
+            guard let inputData: [String] = readLine()?.components(separatedBy: " ") else { return }
+            let a: Int = inputData.map { Int($0) }[0] ?? 0
+            let b: Int = inputData.map { Int($0) }[1] ?? 0
+            
+            myGraph[a][b] = 1
+            myGraph[b][a] = 1
+        }
+    }
+```
+
 ### 33.3. 그래프의 구현 2 : 인접 리스트
 <pre>
     1. 각각의 정점에 대하여 인접한 정점 번호를 저장함
     2. 장점 : 인접한 정점을 모두 찾는 것이 O(degree) 인접 행렬보다 빠르며, 필요한 만큼만 공간을 활용함
     3. 단점 : x와 y 두 정점 연결 여부를 찾는 것이 O(degree)로 인접 행렬의 O(1)에 비해 느림
 </pre>
+
+```swift
+    func solution() -> Void {
+        guard let input: [String] = readLine()?.components(separatedBy: " ") else { return }
+        let n: Int = input.map { Int($0) }[0] ?? 0
+        let m: Int = input.map { Int($0) }[1] ?? 0
+        var myGraph: [Graph] = Array(repeating: Graph(), count: n + 10)
+        
+        for _ in 0..<m {
+            guard let inputData: [String] = readLine()?.components(separatedBy: " ") else { return }
+            let a: Int = inputData.map { Int($0) }[0] ?? 0
+            let b: Int = inputData.map { Int($0) }[1] ?? 0
+            
+            myGraph[a].edges.append(b)
+            myGraph[b].edges.append(a)
+        }
+    }
+```
 
 ### 34. 그래프 탐색(Graph Traversal)
 <pre>
@@ -883,6 +1356,42 @@
     4. 시작점을 색칠하고 큐에 넣고, 큐에서 현재 위치를 빼고 인접한 노드들을 색칠하고 큐에 넣고 위와 같은 과정을 큐가 빌 때 까지 계속해서 반복함
     5. 깊이우선과 마찬가지로 O(V + E)의 시간복잡도를 가짐
 </pre>
+
+```swift
+    func dfs(_ x: Int) -> Void {
+        visited[x] = true;
+        print("\(x) ", terminator: "")
+        
+        for i in stride(from: 0, to: graph[x].edges.count, by: 1) {
+            let y: Int = graph[x].edges[i]
+            
+            if !visited[y] {
+                visited[y] = true
+                dfs(y)
+            }
+        }
+    }
+
+    func bfs(_ start: Int) -> Void {
+        var queue: [Int] = []
+        queue.append(start)
+        visited[start] = true
+        
+        while !queue.isEmpty {
+            let current: Int = queue.removeFirst()
+            print("\(current) ", terminator: "")
+            
+            for i in stride(from: 0, to: graph[current].edges.count, by: 1) {
+                let next: Int = graph[current].edges[i]
+                
+                if !visited[next] {
+                    visited[next] = true
+                    queue.append(next)
+                }
+            }
+        }
+    }
+```
 
 ### 35. 그래프 알고리즘
 ### 35.1. 최단 경로 알고리즘(Shortest Path Finding Algorithm)
@@ -912,6 +1421,38 @@
     5. 위 과정을 모든 정점에 대해 반복하면, 시작점으로부터 모든 정점의 최단 경로를 구할 수 있음
 </pre>
 
+```swift
+    func dijkstra(_ N: Int, _ start: Int, _ end: Int) -> Int {
+        var distances: [Int] = Array(repeating: 987987987, count: N + 10)
+        distances[start] = 0
+        
+        for _ in 0..<N {
+            var minCost, minIndex: Int
+            minCost = 987987987
+            minIndex = -1
+            
+            for j in 0..<N {
+                if !visited[j] && minCost > distances[j] {
+                    minCost = distances[j]
+                    minIndex = j
+                }
+            }
+            visited[minIndex] = true
+            
+            for j in 0..<graph[minIndex].edges.count {
+                let y: Int = graph[minIndex].edges[j]
+                let cost: Int = graph[minIndex].costs[j]
+                
+                if distances[y] > distances[minIndex] + cost {
+                    distances[y] = distances[minIndex] + cost
+                }
+            }
+        }
+        
+        return distances[end]
+    }
+```
+
 ### 35.2. 최소 신장 트리(Minimum Spanning Tree)
 <pre>
     1. 스패닝 트리 : 그래프의 모든 노드를 포함하는 트리(사이클이 없는 그래프)
@@ -932,6 +1473,82 @@
     8. 따라서 크루스칼 알고리즘을 구현하기 위해서 간선의 가중치가 오름차순으로 정렬되어 있어야 하고, Disjoin Set 자료구조를 이용하여 사이클 여부를 판단해야 함
     9. 한가지 Tip은 이제껏 그래프를 구현할 때 인접 행렬 혹은 인접 리스트로 구현해왔지만, 크루스칼 알고리즘의 경우는 간선에 관심이 있기 때문에 구조체로 시작점과 끝점, 그리고 가중치로 이루어진 구조체로 그래프를 구현하는 것이 구현에 있어 용이함
 </pre>
+
+```swift
+    //MARK: - Type
+    struct Edge {
+        //MARK: - Property
+        var p, q, cost: Int
+        
+        //MARK: - Initializer
+        init(_ p: Int, _ q: Int, _ cost: Int) {
+            self.p = p
+            self.q = q
+            self.cost = cost
+        }
+    }
+
+    //MARK: - Variable
+    var parent: [Int] = []
+
+    //MARK: - Function
+    func find(_ x: Int) -> Int {
+        if x == parent[x] {
+            return x
+        }
+        
+        let y: Int = find(parent[x])
+        parent[x] = y
+        
+        return y
+    }
+
+    func unionFind(_ p: Int, _ q: Int) -> Bool {
+        let rootP: Int = find(p)
+        let rootQ: Int = find(q)
+        
+        if rootP == rootQ {
+            return false
+        }
+        
+        parent[rootP] = rootQ
+        return true
+    }
+
+    func solution() -> Void {
+        //MARK: - Input
+        guard let input: [String] = readLine()?.components(separatedBy: " ") else { return }
+        let N: Int = input.map { Int($0) }[0] ?? 0
+        let M: Int = input.map { Int($0) }[1] ?? 0
+        
+        var result: Int = 0
+        var edges: [Edge] = []
+        parent = Array(repeating: 0, count: N + 10)
+        
+        for i in stride(from: 1, through: N, by: 1) {
+            parent[i] = i
+        }
+        
+        for _ in 0..<M {
+            guard let inputData: [String] = readLine()?.components(separatedBy: " ") else { return }
+            let a: Int = inputData.map { Int($0) }[0] ?? 0
+            let b: Int = inputData.map { Int($0) }[1] ?? 0
+            let c: Int = inputData.map { Int($0) }[2] ?? 0
+            
+            edges.append(Edge(a, b, c))
+        }
+        
+        //MARK: - Process
+        edges.sort { $0.cost < $1.cost }
+        
+        for edge in edges {
+            result += unionFind(edge.p, edge.q) ? edge.cost : 0
+        }
+        
+        //MARK: - Output
+        print(result)
+    }
+```
 
 ### 35.2.2. 크루스칼 알고리즘과 다익스트라 알고리즘의 차이
 <pre>
@@ -955,6 +1572,94 @@
     5. 간선의 방향이 반대인 그래프에 대해 가장 나중에 빠져 나온 단말 노드 부터 다시 한번 DFS를 적용하게 되면, SCC를 구할 수 있음(서로 오고갈 수 있는 경로가 존재하는 노드들끼리 이루어진 그래프와, 그 개수)
     6. 따라서 코사라주 알고리즘은 DFS를 2번 적용한 알고리즘으로써 O(V + E) 시간복잡도를 가짐
 </pre>
+
+```swift
+    //MARK: - Type
+    struct Graph {
+        //MARK: - Property
+        var edges: [Int]
+        
+        //MARK: - Init
+        init() {
+            self.edges = []
+        }
+    }
+
+    //MARK: - Variable
+    var graph: [Graph] = [], reverseGraph: [Graph] = []
+    var visited: [Bool] = []
+    var orders: [Int] = [], groups: [Int] = []
+    var orderCount: Int = 0, groupCount: Int = 0
+
+    //MARK: - Function
+    func graphDFS(_ x: Int) -> Void {
+        visited[x] = true
+        
+        for i in 0..<graph[x].edges.count {
+            let y: Int = graph[x].edges[i]
+            
+            if !visited[y] {
+                graphDFS(y)
+            }
+        }
+        
+        orders[orderCount] = x
+        orderCount += 1
+    }
+
+    func reverseGraphDFS(_ x: Int) -> Void {
+        visited[x] = true
+        groups[x] = groupCount
+        
+        for i in 0..<reverseGraph[x].edges.count {
+            let y: Int = reverseGraph[x].edges[i]
+            
+            if !visited[y] {
+                reverseGraphDFS(y)
+            }
+        }
+    }
+
+    func solution() -> Void {
+        //MARK: - Input
+        guard let input: [String] = readLine()?.components(separatedBy: " ") else { return }
+        let N: Int = input.map { Int($0) }[0] ?? 0
+        let M: Int = input.map { Int($0) }[1] ?? 0
+        graph = Array(repeating: Graph(), count: N + 10)
+        reverseGraph = Array(repeating: Graph(), count: N + 10)
+        visited = Array(repeating: false, count: N + 10)
+        orders = Array(repeating: 0, count: N + 10)
+        groups = Array(repeating: 0, count: N + 10)
+        
+        for _ in 0..<M {
+            guard let inputData: [String] = readLine()?.components(separatedBy: " ") else { return }
+            let a: Int = inputData.map { Int($0) }[0] ?? 0
+            let b: Int = inputData.map { Int($0) }[1] ?? 0
+            
+            graph[a].edges.append(b)
+            reverseGraph[b].edges.append(a)
+        }
+        
+        //MARK: - Process
+        for i in stride(from: 1, through: N, by: 1) {
+            if !visited[i] {
+                graphDFS(i)
+            }
+        }
+        
+        visited = Array(repeating: false, count: N + 10)
+        
+        for i in stride(from: orderCount - 1, through: 0, by: -1) {
+            if !visited[orders[i]] {
+                reverseGraphDFS(orders[i])
+                groupCount += 1
+            }
+        }
+        
+        //MARK: - Output
+        print(groupCount)
+    }
+```
 
 </br>
 
