@@ -24,7 +24,7 @@ guard let input: Int = Int(readLine() ?? "0") else { return }
 #### 1.3. print() 사용시, 줄바꿈 없이("\n") 출력해야 하는 경우
 
 ```swift
-print(data, terminator: ""
+print(data, terminator: "")
 ```
 
 #### 1.4. 배열의 원소를 공백을 두고 줄바꿈 없이 출력해야 하는 경우 -> "\() " 문자열 보간법 사용
