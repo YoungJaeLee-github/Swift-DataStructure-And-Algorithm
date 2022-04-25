@@ -4,7 +4,6 @@
 //
 //  Created by 이영재 on 2022/04/14.
 //MARK: - 이분 그래프 판별
-
 //MARK: - Framework
 import Foundation
 
@@ -23,27 +22,27 @@ struct Graph {
 var graph: [Graph] = []
 var visited: [Bool] = []
 var groups: [Int] = []
-var flag: Bool = false
 
 //MARK: - Function
-func dfs(_ x: Int) -> Void {
+func dfs(_ x: Int) -> Bool {
     visited[x] = true
+    var result: Bool = true
     
     for i in 0..<graph[x].edges.count {
         let y: Int = graph[x].edges[i]
         
         if !visited[y] {
             groups[y] = groups[x] == 0 ? 1 : 0
-            dfs(y)
+            result = dfs(y)
         } else {
             if groups[y] == groups[x] {
-                flag = false
-                return
+                result = false
+                break
             }
         }
     }
     
-    flag = true
+    return result
 }
 
 func solution() -> Void {
@@ -51,6 +50,7 @@ func solution() -> Void {
     guard let input: [String] = readLine()?.components(separatedBy: " ") else { return }
     let N: Int = input.map { Int($0) }[0] ?? 0
     let M: Int = input.map { Int($0) }[1] ?? 0
+    var flag: Bool = false
     graph = Array(repeating: Graph(), count: N + 10)
     visited = Array(repeating: false, count: N + 10)
     groups = Array(repeating: 0, count: N + 10)
@@ -65,7 +65,7 @@ func solution() -> Void {
     }
     
     //MARK: - Process
-    dfs(1)
+    flag = dfs(1)
     
     //MARK: - Output
     print(flag ? "Yes" : "No")

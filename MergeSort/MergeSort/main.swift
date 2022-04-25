@@ -16,7 +16,7 @@ func merging(_ array: inout [Int], _ s1: Int, _ e1: Int, _ s2: Int, _ e2: Int) -
     var p: Int = s1
     var q: Int = s2
     var index: Int = 0
-    
+
     while p <= e1 && q <= e2 {
         if array[p] <= array[q] {
             tempArray[index] = array[p]
@@ -27,7 +27,7 @@ func merging(_ array: inout [Int], _ s1: Int, _ e1: Int, _ s2: Int, _ e2: Int) -
         }
         index += 1
     }
-    
+
     if p > e1 {
         for i in q...e2 {
             tempArray[index] = array[i]
@@ -39,7 +39,7 @@ func merging(_ array: inout [Int], _ s1: Int, _ e1: Int, _ s2: Int, _ e2: Int) -
             index += 1
         }
     }
-    
+
     for i in s1...e2 {
         array[i] = tempArray[i - s1]
     }
@@ -50,11 +50,11 @@ func mergeSort(_ array: inout [Int], _ start: Int, _ end: Int) -> Void {
     if start >= end {
         return
     }
-    
+
     let mid: Int = (start + end) / 2
     mergeSort(&array, start, mid)
     mergeSort(&array, mid + 1, end)
-    
+
     merging(&array, start, mid, mid + 1, end)
 }
 
@@ -65,15 +65,15 @@ func solution() -> Void {
     var answer: String = ""
     var array: [Int] = input.map { Int($0) ?? 0 }
     tempArray = Array(repeating: 0, count: n)
-    
+
     //MARK: - Process
     mergeSort(&array, 0, n - 1)
-    
+
     for i in 0..<array.count - 1 {
         answer += "\(array[i]) "
     }
     answer += "\(array[array.count - 1])"
-    
+
     //MARK: - Output
     print(answer)
 }

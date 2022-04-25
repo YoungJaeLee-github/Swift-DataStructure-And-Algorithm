@@ -17,7 +17,7 @@ func getLeft(_ array: [Int], _ start: Int, _ end: Int, _ pivot: Int, _ left: ino
             index += 1
         }
     }
-    
+
     return index
 }
 
@@ -29,7 +29,7 @@ func getRight(_ array: [Int], _ start: Int, _ end: Int, _ pivot: Int, _ right: i
             index += 1
         }
     }
-    
+
     return index
 }
 
@@ -38,21 +38,21 @@ func quickSort(_ array: inout [Int], _ left: inout [Int], _ right: inout [Int], 
     if start >= end {
         return
     }
-    
+
     let pivot: Int = array[start]
     let leftCount: Int = getLeft(array, start + 1, end, pivot, &left)
     let rightCount: Int = getRight(array, start + 1, end, pivot, &right)
-    
+
     for i in 0..<leftCount {
         array[start + i] = left[i]
     }
-    
+
     array[start + leftCount] = pivot
-    
+
     for i in 0..<rightCount {
         array[start + leftCount + 1 + i] = right[i]
     }
-    
+
     quickSort(&array, &left, &right, start, start + leftCount - 1)
     quickSort(&array, &left, &right, start + leftCount + 1, end)
 }
@@ -61,20 +61,20 @@ func solution() -> Void {
     //MARK: - Input
     guard let N: Int = Int(readLine() ?? "0") else { return }
     guard let input = readLine()?.components(separatedBy: " ") else { return }
-    
+
     var answer: String = ""
     var array: [Int] = input.map { Int($0) ?? 0 }
     var left: [Int] = Array(repeating: 0, count: N)
     var right: [Int] = Array(repeating: 0, count: N)
-    
+
     //MARK: - Process
     quickSort(&array, &left, &right, 0, N - 1)
-    
+
     for i in 0..<array.count - 1 {
         answer += "\(array[i]) "
     }
     answer += "\(array[array.count - 1])"
-    
+
     //MARK: - Output
     print(answer)
 }
