@@ -15,7 +15,7 @@ struct ColorPaperInfo {
     var column: Int
     var width: Int
     var height: Int
-    
+
     //MARK: - Initializer
     init(_ row: Int, _ column: Int, _ width: Int, _ height: Int) {
         self.row = row
@@ -57,11 +57,11 @@ func solution() -> Void {
         let row: Int = input.map { Int($0) }[1] ?? 0
         let width: Int = input.map { Int($0) }[2] ?? 0
         let height: Int = input.map { Int($0) }[3] ?? 0
-        
+
         paperInfo.append(ColorPaperInfo(row, column, width, height))
     }
     var areaInfo: AreaInfo = AreaInfo(paperInfo, paperCount)
-    
+
     //MARK: - process
     for i in 1...paperCount {
         for j in paperInfo[i - 1].row..<paperInfo[i - 1].row + paperInfo[i - 1].height {
@@ -70,22 +70,21 @@ func solution() -> Void {
             }
         }
     }
-    
+
     for i in 0..<areaInfo.array.count {
         for j in 0..<areaInfo.array[i].count {
             areaInfo.area[areaInfo.array[i][j]] += 1
         }
     }
-    
+
     for paperArea in areaInfo.area {
         if paperArea == 0 {
             continue
         }
         answer += "\(paperArea)\n"
     }
-    
+
     //MARK: - output
     print(answer)
 }
 solution()
-

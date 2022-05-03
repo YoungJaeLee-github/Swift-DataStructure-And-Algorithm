@@ -1,82 +1,113 @@
+////
+////  main.swift
+////  BinaryColorBFS
+////
+////  Created by 이영재 on 2022/04/15.
+////MARK: - 2색칠하기 - BFS
 //
-//  main.swift
-//  BinaryColorBFS
+////MARK: - Framework
+//import Foundation
 //
-//  Created by 이영재 on 2022/04/15.
-//MARK: - 2색칠하기 - BFS
+////MARK: - Type
+//struct Graph {
+//    //MARK: - Property
+//    var edges: [Int]
+//
+//    //MARK: - Initializer
+//    init() {
+//        self.edges = []
+//    }
+//}
+//
+////MARK: - Variable
+//var graph: [Graph] = []
+//var visited: [Bool] = []
+//var groups: [Int] = []
+//
+////MARK: - Function
+//func bfs(_ start: Int) -> Bool {
+//    var result: Bool = true
+//    var queue: [Int] = []
+//    queue.append(start)
+//    visited[start] = true
+//
+//    while !queue.isEmpty {
+//        let current: Int = queue.removeFirst()
+//
+//        for i in stride(from: 0, to: graph[current].edges.count, by: 1) {
+//            let next: Int = graph[current].edges[i]
+//
+//            if !visited[next] {
+//                groups[next] = groups[current] == 0 ? 1 : 0
+//                visited[next] = true
+//                queue.append(next)
+//            }
+//
+//            if groups[next] == groups[current] {
+//                result = false
+//                break
+//            }
+//        }
+//
+//        if !result {
+//            break
+//        }
+//    }
+//
+//    return result
+//}
+//
+//func solution() -> Void {
+//    //MARK: - Input
+//    guard let input = readLine()?.components(separatedBy: " ") else { return }
+//    let N: Int = input.map { Int($0) }[0] ?? 0
+//    let M: Int = input.map { Int($0) }[1] ?? 0
+//    graph = Array(repeating: Graph(), count: N + 10)
+//    visited = Array(repeating: false, count: N + 10)
+//    groups = Array(repeating: 0, count: N + 10)
+//
+//    for _ in 0..<M {
+//        guard let data = readLine()?.components(separatedBy: " ") else { return }
+//        let a: Int = data.map { Int($0) }[0] ?? 0
+//        let b: Int = data.map { Int($0) }[1] ?? 0
+//
+//        graph[a].edges.append(b)
+//        graph[b].edges.append(a)
+//    }
+//
+//    //MARK: - Process & Output
+//    print(bfs(0) ? "YES" : "NO")
+//}
+//solution()
 
-//MARK: - Framework
-import Foundation
-
-//MARK: - Type
-struct Graph {
-    //MARK: - Property
-    var edges: [Int]
-    
-    //MARK: - Initializer
-    init() {
-        self.edges = []
+func binarySearch(_ array: [Int], _ start: Int, _ end: Int, _ value: Int) -> Bool {
+    if start >= end {
+        return array[start] == value ? true : false
     }
+    
+    let mid: Int = (start + end) / 2
+    if array[mid] == value {
+        return true
+    }
+    
+    return array[mid] < value ? binarySearch(array, mid + 1, end, value) : binarySearch(array, start, mid - 1, value)
 }
 
-//MARK: - Variable
-var graph: [Graph] = []
-var visited: [Bool] = []
-var groups: [Int] = []
+let N: Int = Int(readLine()!)!
+var cards: [Int] = []
+var answer: String = ""
 
-//MARK: - Function
-func bfs(_ start: Int) -> Bool {
-    var result: Bool = true
-    var queue: [Int] = []
-    queue.append(start)
-    visited[start] = true
+for _ in 0..<N {
+    cards.append(Int(readLine()!)!)
+}
+cards.sort { $0 < $1 }
+
+let M: Int = Int(readLine()!)!
+
+for _ in 0..<M {
+    let target: Int = Int(readLine()!)!
     
-    while !queue.isEmpty {
-        let current: Int = queue.removeFirst()
-        
-        for i in stride(from: 0, to: graph[current].edges.count, by: 1) {
-            let next: Int = graph[current].edges[i]
-            
-            if !visited[next] {
-                groups[next] = groups[current] == 0 ? 1 : 0
-                visited[next] = true
-                queue.append(next)
-            }
-            
-            if groups[next] == groups[current] {
-                result = false
-                break
-            }
-        }
-        
-        if !result {
-            break
-        }
-    }
-    
-    return result
+    answer += binarySearch(cards, 0, N, target) ? "1 " : "0 "
 }
 
-func solution() -> Void {
-    //MARK: - Input
-    guard let input = readLine()?.components(separatedBy: " ") else { return }
-    let N: Int = input.map { Int($0) }[0] ?? 0
-    let M: Int = input.map { Int($0) }[1] ?? 0
-    graph = Array(repeating: Graph(), count: N + 10)
-    visited = Array(repeating: false, count: N + 10)
-    groups = Array(repeating: 0, count: N + 10)
-    
-    for _ in 0..<M {
-        guard let data = readLine()?.components(separatedBy: " ") else { return }
-        let a: Int = data.map { Int($0) }[0] ?? 0
-        let b: Int = data.map { Int($0) }[1] ?? 0
-        
-        graph[a].edges.append(b)
-        graph[b].edges.append(a)
-    }
-    
-    //MARK: - Process & Output
-    print(bfs(0) ? "YES" : "NO")
-}
-solution()
-
+print(answer)

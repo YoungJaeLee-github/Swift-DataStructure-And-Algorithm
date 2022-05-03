@@ -1699,6 +1699,12 @@ func solution() -> Void {
 6. 결국, 복잡한 문제에대해 단위 단위 별로 나누어서 단위 문제를 해결하고 합쳐서 최종 문제를 해결하면, 보다 수월하게 Simulation 문제를 해결할 수 있음
 </pre>
 
+### 36.3. 시뮬레이션 문제 풀이 Tip2
+<pre>
+1. 반복적으로 재사용 될 수 있는 코드는 함수로 모듈화 시키는 것이 좋음
+2. 경계처리 알고리즘에서 여유있게 공간을 할당한 부분은 정답에 영향을 끼치지 않는 값으로 초기화 해야 함
+</pre>
+
 </br>
 
 <pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Simulation">=> 시뮬레이션(Simulation) 예제</a></pre>
