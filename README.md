@@ -1705,6 +1705,14 @@ func solution() -> Void {
 2. 경계처리 알고리즘에서 여유있게 공간을 할당한 부분은 정답에 영향을 끼치지 않는 값으로 초기화 해야 함
 </pre>
 
+### 36.4. 시뮬레이션 문제 풀이 Tip3
+<pre>
+1. 메모리상에 2차원 배열의 크기를 할당할 때, 지역변수로 할당하게 되면 Stack 메모리의 공간을 차지하게 되는데,
+2. 보통 Stack 메모리의 최대 크기는 1MB 이기 때문에 이 범위를 벗어나는 경우는 즉, 1000 x 1000 이상인 경우는 전역변수로 할당해 주는 것이 안전함
+3. 이때 할당되는 메모리 영역은 Static 메모리에 할당됨
+4. 시뮬레이션 문제일수록 다이나믹 프로그래밍과 같이 설계를 먼저 꼼꼼히 하고, 코드로 옮기는 작업을 습관화 해야 함
+</pre>
+
 </br>
 
 <pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Simulation">=> 시뮬레이션(Simulation) 예제</a></pre>
