@@ -1713,6 +1713,12 @@ func solution() -> Void {
 4. 시뮬레이션 문제일수록 다이나믹 프로그래밍과 같이 설계를 먼저 꼼꼼히 하고, 코드로 옮기는 작업을 습관화 해야 함
 </pre>
 
+### 36.5. 시뮬레이션 문제 풀이 Tip4
+<pre>
+1. 복잡한 시뮬레이션 문제에 대해 여러 예시 케이스 중 하나의 케이스를 손으로 풀었을 때 일치하면 정확하게 이해하고 있을 가능성이 큼
+2. 1차원 혹은 다차원 배열에서 index의 이동을 굉장히 많이 해야 한다면, 완전 탐색으로 해결할 경우 연산량이 많아 Time out이 발생할 수 있어, 주기를 파악해서 연산량을 줄일 수 있음(% 연산을 통해)
+</pre>
+
 </br>
 
 <pre><a href="https://youngjaelee-dev.tistory.com/category/Swift%20Data%20Structure%20And%20Algorithm/Simulation">=> 시뮬레이션(Simulation) 예제</a></pre>
